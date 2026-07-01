@@ -24,7 +24,7 @@ export function LessonDetail() {
       : sandbox.title_hi || sandbox.title || "CSS INTERACTIVE";
 
     return (
-      <div key={index} className="px-5 pb-5 bg-white dark:bg-slate-900">
+      <div key={index} className="w-full">
         <div className="bg-[#111827] rounded-3xl p-5 mb-4 shadow-sm border border-slate-800">
           <div className="text-slate-400 text-xs font-bold tracking-widest mb-3 uppercase">{sandboxTitle}</div>
           <pre className="text-slate-50 font-mono text-sm overflow-x-auto whitespace-pre-wrap">
@@ -54,17 +54,49 @@ export function LessonDetail() {
         <h1 className="font-bold text-slate-800 dark:text-white flex-1 truncate">{language === 'en' ? selectedTopic.title_en : selectedTopic.title_hi}</h1>
       </div>
 
-      <div className="p-5 flex-1 overflow-auto">
-        <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-code:text-pink-600 prose-code:bg-pink-50 dark:prose-code:bg-pink-900/30 prose-code:px-1 prose-code:rounded prose-pre:bg-slate-800 prose-pre:text-slate-50">
-          <Markdown>{language === 'en' ? selectedTopic.content_en : selectedTopic.content_hi}</Markdown>
-        </div>
-      </div>
+      <div className="p-5 flex-1 overflow-auto flex flex-col gap-5">
+        {(() => {
+          const content = language === 'en' ? selectedTopic.content_en : selectedTopic.content_hi;
+          if (!content) return null;
 
-      {selectedTopic.sandboxes ? (
-        selectedTopic.sandboxes.map((sandbox, index) => renderSandbox(sandbox, index))
-      ) : selectedTopic.sandboxCode ? (
-        renderSandbox(selectedTopic.sandboxCode, 0)
-      ) : null}
+          const parts = content.split(/(\[\[SANDBOX_\d+\]\])/);
+          const hasSandboxes = /\[\[SANDBOX_\d+\]\]/.test(content);
+
+          return (
+            <>
+              {parts.map((part, index) => {
+                const match = part.match(/\[\[SANDBOX_(\d+)\]\]/);
+                if (match) {
+                  const sandboxIndex = parseInt(match[1], 10);
+                  const sandbox = selectedTopic.sandboxes?.[sandboxIndex] || (sandboxIndex === 0 ? selectedTopic.sandboxCode : null);
+                  if (sandbox) {
+                    return renderSandbox(sandbox, index);
+                  }
+                  return null;
+                }
+                
+                if (!part.trim()) return null;
+
+                return (
+                  <div key={index} className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-code:text-pink-600 prose-code:bg-pink-50 dark:prose-code:bg-pink-900/30 prose-code:px-1 prose-code:rounded prose-pre:bg-slate-800 prose-pre:text-slate-50">
+                    <Markdown>{part}</Markdown>
+                  </div>
+                );
+              })}
+
+              {!hasSandboxes && (
+                <div className="mt-2">
+                  {selectedTopic.sandboxes ? (
+                    selectedTopic.sandboxes.map((sandbox, index) => renderSandbox(sandbox, index))
+                  ) : selectedTopic.sandboxCode ? (
+                    renderSandbox(selectedTopic.sandboxCode, 0)
+                  ) : null}
+                </div>
+              )}
+            </>
+          );
+        })()}
+      </div>
     </div>
   );
 }
