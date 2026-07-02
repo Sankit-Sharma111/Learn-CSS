@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror, { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
 import { Play, RotateCcw, Sparkles } from "lucide-react";
@@ -14,6 +14,7 @@ export function EditorTab() {
   const [aiPrompt, setAiPrompt] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const editorRef = useRef<ReactCodeMirrorRef>(null);
 
   const htmlExtensions = [html()];
   const cssExtensions = [css()];
@@ -43,11 +44,109 @@ export function EditorTab() {
     }
   }, [showPreview, editorHtml, editorCss]);
 
+  // Fallback simple append
   const insertSnippet = (snippet: string) => {
     if (activeFile === "html") {
       setEditorHtml(prev => prev + snippet);
     } else {
       setEditorCss(prev => prev + snippet);
+    }
+  };
+
+  const insertCodeSnippet = (snippet: string, cursorOffsetBack: number = 0) => {
+    const view = editorRef.current?.view;
+    if (!view) {
+      insertSnippet(snippet);
+      return;
+    }
+    
+    const state = view.state;
+    const selection = state.selection.main;
+    
+    view.dispatch({
+      changes: { from: selection.from, to: selection.to, insert: snippet },
+      selection: { anchor: selection.from + snippet.length - cursorOffsetBack }
+    });
+    view.focus();
+  };
+
+  const insertHtmlAttribute = (attrName: string) => {
+    const view = editorRef.current?.view;
+    if (!view || activeFile !== "html") {
+      insertSnippet(` ${attrName}=""`);
+      return;
+    }
+
+    const state = view.state;
+    const selection = state.selection.main;
+    const cursor = selection.head;
+    const docText = state.doc.toString();
+
+    let insertPos = -1;
+    let tagContent = "";
+
+    // Case 1: Cursor is currently INSIDE an opening tag (e.g., `<div |>`)
+    const textBefore = docText.slice(0, cursor);
+    const textAfter = docText.slice(cursor);
+    const insideTagMatch = textBefore.match(/<[a-zA-Z0-9-]+[^>]*$/);
+    
+    if (insideTagMatch) {
+      const endOffset = textAfter.indexOf('>');
+      if (endOffset !== -1) {
+        insertPos = cursor + endOffset;
+        tagContent = insideTagMatch[0] + textAfter.slice(0, endOffset);
+      }
+    } else {
+      // Case 2: Cursor is OUTSIDE an opening tag (e.g., `<div>|</div>` or `<button>|`)
+      // Find the most recent opening tag before the cursor
+      const regex = /<([a-zA-Z0-9-]+)([^>]*?)(\/?)>/g;
+      let match;
+      let lastOpenTag = null;
+      let lastOpenTagEnd = -1;
+
+      while ((match = regex.exec(docText)) !== null) {
+        if (match.index < cursor) {
+          lastOpenTag = match;
+          lastOpenTagEnd = match.index + match[0].length;
+        } else {
+          break;
+        }
+      }
+
+      if (lastOpenTag) {
+        // We found the nearest opening tag. The insertion point is right before the `>` or `/>`
+        const isSelfClosing = lastOpenTag[3] === '/';
+        insertPos = lastOpenTagEnd - (isSelfClosing ? 2 : 1);
+        tagContent = lastOpenTag[0];
+      }
+    }
+
+    if (insertPos !== -1) {
+      // Check if attribute already exists
+      const attrRegex = new RegExp(`\\s${attrName}=['"]`, 'i');
+      if (attrRegex.test(tagContent)) {
+        view.focus();
+        return;
+      }
+
+      // Check if we need a leading space
+      const textJustBeforeInsert = docText.slice(0, insertPos);
+      const needsSpace = !textJustBeforeInsert.match(/\s$/);
+      const textToInsert = (needsSpace ? " " : "") + `${attrName}=""`;
+      
+      view.dispatch({
+        changes: { from: insertPos, insert: textToInsert },
+        selection: { anchor: insertPos + textToInsert.length - 1 }
+      });
+      view.focus();
+    } else {
+      // Fallback
+      const textToInsert = ` ${attrName}=""`;
+      view.dispatch({
+        changes: { from: selection.from, to: selection.to, insert: textToInsert },
+        selection: { anchor: selection.from + textToInsert.length - 1 }
+      });
+      view.focus();
     }
   };
 
@@ -80,7 +179,7 @@ export function EditorTab() {
         throw new Error(data.error);
       }
 
-      insertSnippet(`\n${data.code}\n`);
+      insertCodeSnippet(`\n${data.code}\n`);
       setAiPrompt("");
     } catch (error) {
       console.error(error);
@@ -115,7 +214,7 @@ export function EditorTab() {
   }
 
   return (
-    <div className="bg-slate-900 min-h-screen pb-24 max-w-lg mx-auto flex flex-col">
+    <div className="bg-slate-900 min-h-screen pb-24 max-w-5xl mx-auto flex flex-col">
       {/* Top Navigation Back */}
       <div className="px-3 pt-3 flex items-center">
         <button 
@@ -162,6 +261,7 @@ export function EditorTab() {
       {/* Editor Area */}
       <div className="flex-1 overflow-auto bg-[#282c34]">
         <CodeMirror
+          ref={editorRef}
           value={activeFile === "html" ? editorHtml : editorCss}
           height="100%"
           theme="dark"
@@ -170,7 +270,7 @@ export function EditorTab() {
             if (activeFile === "html") setEditorHtml(val);
             else setEditorCss(val);
           }}
-          className="text-sm"
+          className="text-sm h-full"
           basicSetup={{
             lineNumbers: true,
             highlightActiveLineGutter: true,
@@ -184,32 +284,38 @@ export function EditorTab() {
         <div className="flex overflow-x-auto no-scrollbar gap-2 pb-1">
           {activeFile === "html" ? (
             <>
-              <HelperBtn onClick={() => insertSnippet("<div>\n\n</div>")}>&lt;div&gt;</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet(' class=""')}>class=""</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet(' id=""')}>id=""</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet("<h1></h1>")}>&lt;h1&gt;</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet("<p></p>")}>&lt;p&gt;</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet("<!--  -->")}>&lt;!-- --&gt;</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("<div>\n  \n</div>", 7)}>&lt;div&gt;</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("<h1></h1>", 5)}>&lt;h1&gt;</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("<p></p>", 4)}>&lt;p&gt;</HelperBtn>
+              <HelperBtn onClick={() => insertHtmlAttribute("class")}>class</HelperBtn>
+              <HelperBtn onClick={() => insertHtmlAttribute("id")}>id</HelperBtn>
+              <HelperBtn onClick={() => insertHtmlAttribute("style")}>style</HelperBtn>
+              <HelperBtn onClick={() => insertHtmlAttribute("src")}>src</HelperBtn>
+              <HelperBtn onClick={() => insertHtmlAttribute("href")}>href</HelperBtn>
+              <HelperBtn onClick={() => insertHtmlAttribute("alt")}>alt</HelperBtn>
+              <HelperBtn onClick={() => insertHtmlAttribute("title")}>title</HelperBtn>
+              <HelperBtn onClick={() => insertHtmlAttribute("target")}>target</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("<!--  -->", 4)}>&lt;!-- --&gt;</HelperBtn>
             </>
           ) : (
             <>
-              <HelperBtn onClick={() => insertSnippet("{\n\n}")}>{"{ }"}</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet("color: ;")}>color:</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet("background: ;")}>bg:</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet("margin: ;")}>margin:</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet("padding: ;")}>padding:</HelperBtn>
-              <HelperBtn onClick={() => insertSnippet("/*  */")}>/* */</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("{\n  \n}", 2)}>{"{ }"}</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("color: ;", 1)}>color:</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("background: ;", 1)}>bg:</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("margin: ;", 1)}>margin:</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("padding: ;", 1)}>padding:</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("/*  */", 3)}>/* */</HelperBtn>
             </>
           )}
         </div>
         <div className="flex overflow-x-auto no-scrollbar gap-2">
-          <HelperBtn onClick={() => insertSnippet("<")}>&lt;</HelperBtn>
-          <HelperBtn onClick={() => insertSnippet(">")}>&gt;</HelperBtn>
-          <HelperBtn onClick={() => insertSnippet("/")}>/</HelperBtn>
-          <HelperBtn onClick={() => insertSnippet("=")}>=</HelperBtn>
-          <HelperBtn onClick={() => insertSnippet('"')}>"</HelperBtn>
-          <HelperBtn onClick={() => insertSnippet(":")}>:</HelperBtn>
-          <HelperBtn onClick={() => insertSnippet(";")}>;</HelperBtn>
+          <HelperBtn onClick={() => insertCodeSnippet("<")}>&lt;</HelperBtn>
+          <HelperBtn onClick={() => insertCodeSnippet(">")}>&gt;</HelperBtn>
+          <HelperBtn onClick={() => insertCodeSnippet("/")}>/</HelperBtn>
+          <HelperBtn onClick={() => insertCodeSnippet("=")}>=</HelperBtn>
+          <HelperBtn onClick={() => insertCodeSnippet('"')}>"</HelperBtn>
+          <HelperBtn onClick={() => insertCodeSnippet(":")}>:</HelperBtn>
+          <HelperBtn onClick={() => insertCodeSnippet(";")}>;</HelperBtn>
         </div>
       </div>
 

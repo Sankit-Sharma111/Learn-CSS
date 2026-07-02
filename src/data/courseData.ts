@@ -8,8 +8,8 @@ export const courseData = [
         "id": "t1-1",
         "title_en": "i. What is CSS?",
         "title_hi": "i. CSS क्या है?",
-        "content_en": "### What is CSS?\nCSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of a document written in HTML.\n\n### 💡 Tips\nCSS saves a lot of work. It can control the layout of multiple web pages all at once.\n\n### 🚀 Code suggestions\nTry changing the color property below to see the text change color.",
-        "content_hi": "### CSS क्या है?\nCSS (Cascading Style Sheets) एक स्टाइलशीट भाषा है जिसका उपयोग HTML में लिखे गए दस्तावेज़ की प्रस्तुति का वर्णन करने के लिए किया जाता है।\n\n### 💡 टिप्स\nCSS बहुत सारा काम बचाता है। यह एक ही बार में कई वेब पेजों के लेआउट को नियंत्रित कर सकता है।",
+        "content_en": "### Why do we need CSS?\n\n1. **Separation of Concerns:** Keep your content (HTML) separate from your design (CSS). This makes your code much easier to manage and update.\n2. **Consistency:** You can style all the headings on a 100-page website by changing just one line of code in a single CSS file.\n3. **Device Compatibility:** CSS allows you to make your website look great on phones, tablets, and desktops by using responsive design techniques.\n4. **Faster Loading:** Since one CSS file can style many pages, the browser only needs to download the design once.\n\n:::tip\n**Did you know?** CSS was first proposed by Håkon Wium Lie on October 10, 1994. Before CSS, nearly all presentation attributes of HTML documents were contained within the HTML markup.\n:::\n\n### A simple Example\nHere is how you can change the color and size of a heading:\n\n[[SANDBOX_0]]\n\n:::mistake\nDon't write CSS styles directly inside HTML tags (like `<div style=\"color: red;\">`). This is called inline styling and makes your code hard to maintain.\n:::",
+        "content_hi": "### हमें CSS की आवश्यकता क्यों है?\n\n1. **चिंताओं को अलग करना:** अपनी सामग्री (HTML) को अपने डिज़ाइन (CSS) से अलग रखें। इससे आपके कोड को प्रबंधित करना और अपडेट करना बहुत आसान हो जाता है।\n2. **संगति:** आप एक ही CSS फ़ाइल में केवल एक पंक्ति का कोड बदलकर 100-पृष्ठ की वेबसाइट पर सभी शीर्षकों को स्टाइल कर सकते हैं।\n3. **डिवाइस संगतता:** CSS आपको उत्तरदायी डिज़ाइन तकनीकों का उपयोग करके अपनी वेबसाइट को फोन, टैबलेट और डेस्कटॉप पर शानदार बनाने की अनुमति देता है।\n4. **तेज़ लोडिंग:** चूंकि एक CSS फ़ाइल कई पृष्ठों को स्टाइल कर सकती है, इसलिए ब्राउज़र को केवल एक बार डिज़ाइन डाउनलोड करने की आवश्यकता होती है।\n\n:::tip\n**क्या आप जानते हैं?** CSS को पहली बार 10 अक्टूबर, 1994 को हाकोन वियम लाई द्वारा प्रस्तावित किया गया था।\n:::\n\n### एक सरल उदाहरण\nयहां बताया गया है कि आप शीर्षक का रंग और आकार कैसे बदल सकते हैं:\n\n[[SANDBOX_0]]\n\n:::mistake\nHTML टैग्स के अंदर सीधे CSS स्टाइल न लिखें (जैसे `<div style=\"color: red;\">`)। इसे इनलाइन स्टाइलिंग कहा जाता है और यह आपके कोड को बनाए रखना मुश्किल बना देता है।\n:::",
         "sandboxCode": {
           "html": "<h1 class=\"title\">Hello World</h1>",
           "css": ".title {\n  color: blue;\n}"
@@ -19,8 +19,8 @@ export const courseData = [
         "id": "t1-2",
         "title_en": "ii. CSS Comments",
         "title_hi": "ii. CSS टिप्पणियाँ",
-        "content_en": "### CSS Comments\nComments are used to explain the code, and may help when you edit the source code at a later date. Comments are ignored by browsers.\n\nA CSS comment starts with `/*` and ends with `*/`.",
-        "content_hi": "### CSS टिप्पणियाँ\nटिप्पणियों का उपयोग कोड को समझाने के लिए किया जाता है, और बाद में स्रोत कोड को संपादित करते समय मदद कर सकते हैं। ब्राउज़रों द्वारा टिप्पणियों को अनदेखा कर दिया जाता है।\n\nएक CSS टिप्पणी `/*` से शुरू होती है और `*/` पर समाप्त होती है।"
+        "content_en": "### CSS Comments\nComments are used to explain the code, and may help when you edit the source code at a later date. Comments are ignored by browsers.\n\nA CSS comment starts with `/*` and ends with `*/`.\n\n:::warning\nComments cannot be nested in CSS. This means you cannot put one comment inside another.\n:::\n\n![CSS Comments Example](https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop)",
+        "content_hi": "### CSS टिप्पणियाँ\nटिप्पणियों का उपयोग कोड को समझाने के लिए किया जाता है, और बाद में स्रोत कोड को संपादित करते समय मदद कर सकते हैं। ब्राउज़रों द्वारा टिप्पणियों को अनदेखा कर दिया जाता है।\n\nएक CSS टिप्पणी `/*` से शुरू होती है और `*/` पर समाप्त होती है。\n\n:::warning\nCSS में टिप्पणियों को नेस्ट नहीं किया जा सकता है। इसका मतलब है कि आप एक टिप्पणी को दूसरी टिप्पणी के अंदर नहीं रख सकते।\n:::\n\n![CSS Comments Example](https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop)"
       },
       {
         "id": "t1-3",
@@ -28,70 +28,53 @@ export const courseData = [
         "title_hi": "iii. CSS चयनकर्ता परिचय",
         "content_en": "### CSS Selectors\nCSS selectors are used to \"find\" (or select) the HTML elements you want to style. We will cover them in depth in Chapter 2.",
         "content_hi": "### CSS चयनकर्ता\nCSS चयनकर्ताओं का उपयोग उन HTML तत्वों को खोजने (या चुनने) के लिए किया जाता है जिन्हें आप स्टाइल करना चाहते हैं। हम अध्याय 2 में इन्हें विस्तार से कवर करेंगे।"
-      },
-      {
-        "id": "t1-4",
-        "title_en": "iv. How to Add CSS",
-        "title_hi": "iv. CSS कैसे जोड़ें",
-        "content_en": "### How to Add CSS\nThere are three ways of inserting a style sheet:\n- External CSS\n- Internal CSS\n- Inline CSS\n\n### • CSS Priority\nIf multiple styles are applied to the same element, the priority (from highest to lowest) is:\n1. Inline style\n2. Internal and External style sheets (whichever is declared last)\n3. Browser default",
-        "content_hi": "### CSS कैसे जोड़ें\nस्टाइल शीट डालने के तीन तरीके हैं:\n- बाहरी CSS\n- आंतरिक CSS\n- इनलाइन CSS\n\n### • CSS प्राथमिकता\nयदि एक ही तत्व पर कई स्टाइल लागू किए जाते हैं, तो प्राथमिकता (उच्चतम से निम्नतम तक) है:\n1. इनलाइन स्टाइल\n2. आंतरिक और बाहरी स्टाइल शीट (जो भी अंतिम घोषित किया गया हो)\n3. ब्राउज़र डिफ़ॉल्ट",
-        "sandboxCode": {
-          "html": "<!-- Inline style has highest priority -->\n<p style=\"color: red;\" class=\"text\">This will be red</p>",
-          "css": ".text {\n  color: blue;\n}"
-        }
       }
     ],
     "quiz": [
       {
         "id": "q1",
         "question_en": "What does CSS stand for?",
-        "question_hi": "CSS का फुल फॉर्म क्या है?",
+        "question_hi": "CSS का मतलब क्या है?",
         "options_en": [
-          "Cascading Style Sheets",
           "Computer Style Sheets",
+          "Cascading Style Sheets",
           "Creative Style Sheets"
         ],
         "options_hi": [
-          "Cascading Style Sheets",
           "Computer Style Sheets",
+          "Cascading Style Sheets",
           "Creative Style Sheets"
         ],
-        "correctAnswerIndex": 0
+        "correctAnswerIndex": 1
       }
     ]
   },
   {
     "id": "ch2",
-    "title_en": "Chapter 2: CSS Selectors Mastery",
-    "title_hi": "अध्याय 2: CSS चयनकर्ता महारत",
+    "title_en": "Chapter 2: CSS Selectors",
+    "title_hi": "अध्याय 2: CSS चयनकर्ता",
     "topics": [
       {
         "id": "t2-1",
         "title_en": "i. Selectors",
         "title_hi": "i. चयनकर्ता",
-        "content_en": "### Selectors\n\n### • Element Selector\nSelects HTML elements based on the element name.\n\n### • Class Selector\nSelects HTML elements with a specific class attribute. Starts with a dot `.class-name`.\n\n### • ID Selector\nSelects a unique element with a specific id attribute. Starts with a hash `#id-name`.\n\n[[SANDBOX_0]]\n\n### • Group Selector\nSelects all elements with the same style definitions. Separated by commas `h1, h2, p`.\n\n### • Descendant Selector\nSelects all elements that are descendants of a specified element. Space separated `div p`.\n\n### • Child Selector\nSelects all elements that are the children of a specified element. Uses `>` like `div > p`.\n\n### • Adjacent Sibling Selector\nSelects an element that is directly after another specific element. Uses `+` like `div + p`.\n\n### • General Sibling Selector\nSelects all elements that are siblings of a specified element. Uses `~` like `div ~ p`.\n\n### • Attribute Selectors\nSelects elements with a specific attribute or attribute value. `[target=\"_blank\"]`.\n\n[[SANDBOX_1]]",
-        "content_hi": "### चयनकर्ता\n\n### • तत्व चयनकर्ता (Element Selector)\nतत्व नाम के आधार पर HTML तत्वों का चयन करता है।\n\n### • वर्ग चयनकर्ता (Class Selector)\nएक विशिष्ट वर्ग विशेषता वाले HTML तत्वों का चयन करता है। एक बिंदु `.class-name` से शुरू होता है।\n\n### • आईडी चयनकर्ता (ID Selector)\nएक विशिष्ट आईडी विशेषता वाले एक अद्वितीय तत्व का चयन करता है। हैश `#id-name` से शुरू होता है।\n\n[[SANDBOX_0]]\n\n### • समूह चयनकर्ता (Group Selector)\nसमान शैली परिभाषाओं वाले सभी तत्वों का चयन करता है। अल्पविराम `h1, h2, p` द्वारा अलग किया गया।\n\n### • वंशज चयनकर्ता (Descendant Selector)\nउन सभी तत्वों का चयन करता है जो किसी निर्दिष्ट तत्व के वंशज हैं। स्थान अलग `div p`।\n\n### • बाल चयनकर्ता (Child Selector)\nउन सभी तत्वों का चयन करता है जो एक निर्दिष्ट तत्व के बच्चे हैं। `div > p` की तरह `>` का उपयोग करता है।\n\n### • आसन्न सिबलिंग चयनकर्ता (Adjacent Sibling Selector)\nउस तत्व का चयन करता है जो सीधे दूसरे विशिष्ट तत्व के बाद होता है। `div + p` की तरह `+` का उपयोग करता है।\n\n### • सामान्य सिबलिंग चयनकर्ता (General Sibling Selector)\nउन सभी तत्वों का चयन करता है जो किसी निर्दिष्ट तत्व के भाई-बहन हैं। `div ~ p` की तरह `~` का उपयोग करता है।\n\n### • विशेषता चयनकर्ता (Attribute Selectors)\nएक विशिष्ट विशेषता या विशेषता मान वाले तत्वों का चयन करता है। `[target=\"_blank\"]`.\n\n[[SANDBOX_1]]",
-        "sandboxes": [
-          {
-            "title_en": "Element, Class, ID",
-            "title_hi": "तत्व, वर्ग, आईडी",
-            "html": "<h1 id=\"main-title\">Main Heading</h1>\n<p class=\"text-content\">A paragraph with a class.</p>\n<span>A normal span element</span>",
-            "css": "h1 {\n  color: blue;\n}\n.text-content {\n  font-size: 18px;\n  color: gray;\n}\n#main-title {\n  text-align: center;\n}"
-          },
-          {
-            "title_en": "Group & Combinator Selectors",
-            "title_hi": "समूह और कॉम्बिनेटर चयनकर्ता",
-            "html": "<div class=\"container\">\n  <h2>Group H2</h2>\n  <p>Child</p>\n  <div><p>Descendant</p></div>\n</div>\n<h3>Group H3</h3>\n<p>Adjacent</p>\n<p>General sibling</p>",
-            "css": "h2, h3 {\n  color: green;\n}\n.container p {\n  margin: 10px;\n}\n.container > p {\n  font-weight: bold;\n}\nh3 + p {\n  color: purple;\n}\nh3 ~ p {\n  text-decoration: underline;\n}"
-          }
-        ]
+        "content_en": "### Selectors\n\n:::suggestion\nWe suggest using Class Selectors most of the time instead of ID selectors because classes can be reused, making your CSS more scalable!\n:::\n\n### • Element Selector\nSelects HTML elements based on the element name.\n\n### • Class Selector\nSelects HTML elements with a specific class attribute. Starts with a dot `.class-name`.\n\n### • ID Selector\nSelects a unique element with a specific id attribute. Starts with a hash `#id-name`.\n\n[[SANDBOX_0]]\n\n### • Group Selector\nSelects all elements with the same style definitions. Separated by commas `h1, h2, p`.\n\n### • Descendant Selector\nSelects all elements that are descendants of a specified element. Space separated `div p`.\n\n### • Child Selector\nSelects all elements that are the children of a specified element. Uses `>` like `div > p`.\n\n### • Adjacent Sibling Selector\nSelects an element that is directly after another specific element. Uses `+` like `div + p`.\n\n### • General Sibling Selector\nSelects all elements that are siblings of a specified element. Uses `~` like `div ~ p`.\n\n### • Attribute Selectors\nSelects elements with a specific attribute or attribute value. `[target=\"_blank\"]`.\n\n[[SANDBOX_1]]",
+        "content_hi": "### चयनकर्ता\n\n:::suggestion\nहम आईडी चयनकर्ताओं के बजाय अधिकांश समय कक्षा चयनकर्ताओं (Class Selectors) का उपयोग करने का सुझाव देते हैं क्योंकि कक्षाओं का पुन: उपयोग किया जा सकता है, जिससे आपका CSS अधिक स्केलेबल हो जाता है!\n:::\n\n### • तत्व चयनकर्ता (Element Selector)\nतत्व नाम के आधार पर HTML तत्वों का चयन करता है।\n\n### • वर्ग चयनकर्ता (Class Selector)\nएक विशिष्ट वर्ग विशेषता वाले HTML तत्वों का चयन करता है। एक बिंदु `.class-name` से शुरू होता है।\n\n### • आईडी चयनकर्ता (ID Selector)\nएक विशिष्ट आईडी विशेषता वाले एक अद्वितीय तत्व का चयन करता है। हैश `#id-name` से शुरू होता है।\n\n[[SANDBOX_0]]\n\n### • समूह चयनकर्ता (Group Selector)\nसमान शैली परिभाषाओं वाले सभी तत्वों का चयन करता है। अल्पविराम `h1, h2, p` द्वारा अलग किया गया।\n\n### • वंशज चयनकर्ता (Descendant Selector)\nउन सभी तत्वों का चयन करता है जो किसी निर्दिष्ट तत्व के वंशज हैं। स्थान अलग `div p`।\n\n### • बाल चयनकर्ता (Child Selector)\nउन सभी तत्वों का चयन करता है जो एक निर्दिष्ट तत्व के बच्चे हैं। `div > p` की तरह `>` का उपयोग करता है।\n\n### • आसन्न सिबलिंग चयनकर्ता (Adjacent Sibling Selector)\nउस तत्व का चयन करता है जो सीधे दूसरे विशिष्ट तत्व के बाद होता है। `div + p` की तरह `+` का उपयोग करता है।\n\n### • सामान्य सिबलिंग चयनकर्ता (General Sibling Selector)\nउन सभी तत्वों का चयन करता है जो किसी निर्दिष्ट तत्व के भाई-बहन हैं। `div ~ p` की तरह `~` का उपयोग करता है।\n\n### • विशेषता चयनकर्ता (Attribute Selectors)\nएक विशिष्ट विशेषता या विशेषता मान वाले तत्वों का चयन करता है। `[target=\"_blank\"]`।\n\n[[SANDBOX_1]]",
+        "sandboxCode": {
+          "html": "<h1>Hello</h1>\n<p class=\"text\">Paragraph 1</p>\n<p id=\"special\">Paragraph 2</p>",
+          "css": "h1 { color: red; }\n.text { color: blue; }\n#special { color: green; }"
+        },
+        "sandboxCode1": {
+          "html": "<a href=\"https://google.com\" target=\"_blank\">Google</a>",
+          "css": "a[target=\"_blank\"] { color: red; }"
+        }
       },
       {
         "id": "t2-2",
-        "title_en": "ii. Pseudo Classes & Elements",
-        "title_hi": "ii. छद्म वर्ग और तत्व",
-        "content_en": "### Pseudo Classes & Elements\nA pseudo-class is used to define a special state of an element (e.g., `:hover`, `:active`).\nA pseudo-element is used to style specified parts of an element (e.g., `::before`, `::first-line`).",
-        "content_hi": "### छद्म वर्ग और तत्व\nएक छद्म-वर्ग का उपयोग किसी तत्व की विशेष स्थिति को परिभाषित करने के लिए किया जाता है (उदा., `:hover`, `:active`)।\nएक छद्म-तत्व का उपयोग किसी तत्व के निर्दिष्ट भागों को स्टाइल करने के लिए किया जाता है (उदा., `::before`, `::first-line`)।"
+        "title_en": "ii. Pseudo-classes",
+        "title_hi": "ii. छद्म वर्ग",
+        "content_en": "### Pseudo-classes\nA pseudo-class is used to define a special state of an element (e.g., `:hover`, `:active`).\nA pseudo-element is used to style specified parts of an element (e.g., `::before`, `::first-line`).",
+        "content_hi": "### छद्म वर्ग (Pseudo-classes)\nएक छद्म-वर्ग का उपयोग किसी तत्व की विशेष स्थिति को परिभाषित करने के लिए किया जाता है (उदा., `:hover`, `:active`)।\nएक छद्म-तत्व का उपयोग किसी तत्व के निर्दिष्ट भागों को स्टाइल करने के लिए किया जाता है (उदा., `::before`, `::first-line`)।"
       }
     ],
     "quiz": [
@@ -136,8 +119,8 @@ export const courseData = [
         "id": "t3-3",
         "title_en": "iii. Background Image",
         "title_hi": "iii. पृष्ठभूमि छवि",
-        "content_en": "### Background Image Properties\n\n### • Background Repeat\nSets if/how a background image will be repeated (`repeat`, `no-repeat`, `repeat-x`).\n\n### • Background Position\nSets the starting position of a background image (`center`, `top left`).\n\n### • Background Size\nSpecifies the size of the background images (`cover`, `contain`, `100%`).",
-        "content_hi": "### पृष्ठभूमि छवि गुण\n\n### • पृष्ठभूमि दोहराना (Background Repeat)\nसेट करता है कि पृष्ठभूमि छवि दोहराई जाएगी या नहीं (`repeat`, `no-repeat`)।\n\n### • पृष्ठभूमि स्थिति (Background Position)\nपृष्ठभूमि छवि की प्रारंभिक स्थिति सेट करता है।\n\n### • पृष्ठभूमि का आकार (Background Size)\nपृष्ठभूमि छवियों का आकार निर्दिष्ट करता है (`cover`, `contain`)。"
+        "content_en": "### Background Image Properties\n\n### • Background Repeat\nSets if/how a background image will be repeated (`repeat`, `repeat-x`, `repeat-y`, `no-repeat`).\n\n### • Background Size\nSpecifies the size of the background images (`cover`, `contain`).",
+        "content_hi": "### पृष्ठभूमि छवि गुण\n\n### • पृष्ठभूमि दोहराना (Background Repeat)\nसेट करता है कि क्या/कैसे पृष्ठभूमि छवि दोहराई जाएगी (`repeat`, `repeat-x`, `repeat-y`, `no-repeat`)।\n\n### • पृष्ठभूमि का आकार (Background Size)\nपृष्ठभूमि छवियों का आकार निर्दिष्ट करता है (`cover`, `contain`)।"
       }
     ],
     "quiz": [
@@ -214,8 +197,8 @@ export const courseData = [
         "id": "t5-1",
         "title_en": "i. Content Area",
         "title_hi": "i. सामग्री क्षेत्र",
-        "content_en": "### Content Area\nThe Box Model consists of:\n\n### • Padding\nClears an area around the content. The padding is transparent.\n\n### • Border\nA border that goes around the padding and content.\n\n### • Margin\nClears an area outside the border. The margin is transparent.",
-        "content_hi": "### सामग्री क्षेत्र\nबॉक्स मॉडल में शामिल हैं:\n\n### • पैडिंग (Padding)\nसामग्री के चारों ओर एक क्षेत्र साफ़ करता है। पैडिंग पारदर्शी है।\n\n### • सीमा (Border)\nएक सीमा जो पैडिंग और सामग्री के चारों ओर जाती है।\n\n### • मार्जिन (Margin)\nसीमा के बाहर एक क्षेत्र साफ़ करता है। मार्जिन पारदर्शी है।"
+        "content_en": "### Content Area\nThe Box Model consists of:\n\n![CSS Box Model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/box-model.png)\n\n### • Padding\nClears an area around the content. The padding is transparent.\n\n### • Border\nA border that goes around the padding and content.\n\n### • Margin\nClears an area outside the border. The margin is transparent.\n\n:::warning\nMargin collapses! When two vertical margins touch, they combine into a single margin equal to the larger of the two.\n:::\n\n:::mistake\nForgetting that `width` and `height` properties by default only apply to the content area, not including padding and borders. Use `box-sizing: border-box` to include them.\n:::",
+        "content_hi": "### सामग्री क्षेत्र\nबॉक्स मॉडल में शामिल हैं:\n\n![CSS Box Model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/box-model.png)\n\n### • पैडिंग (Padding)\nसामग्री के चारों ओर एक क्षेत्र साफ़ करता है। पैडिंग पारदर्शी है।\n\n### • सीमा (Border)\nएक सीमा जो पैडिंग और सामग्री के चारों ओर जाती है।\n\n### • मार्जिन (Margin)\nसीमा के बाहर एक क्षेत्र साफ़ करता है। मार्जिन पारदर्शी है।\n\n:::warning\nमार्जिन गिर जाता है (Margin Collapse)! जब दो लंबवत मार्जिन छूते हैं, तो वे दोनों में से बड़े के बराबर एक ही मार्जिन में मिल जाते हैं।\n:::\n\n:::mistake\nयह भूल जाना कि डिफ़ॉल्ट रूप से `width` और `height` गुण केवल सामग्री क्षेत्र पर लागू होते हैं, जिसमें पैडिंग और सीमाएँ शामिल नहीं होती हैं। उन्हें शामिल करने के लिए `box-sizing: border-box` का उपयोग करें।\n:::",
       },
       {
         "id": "t5-2",

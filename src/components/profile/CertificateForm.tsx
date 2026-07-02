@@ -30,7 +30,7 @@ export function CertificateForm({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-24 max-w-lg mx-auto">
+    <div className="bg-slate-50 min-h-screen pb-24 max-w-5xl mx-auto">
       <div className="bg-white border-b border-slate-100 px-4 py-4 flex items-center gap-3 sticky top-0 z-10">
         <button 
           onClick={onBack}

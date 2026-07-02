@@ -13,7 +13,7 @@ export function ChapterList() {
   };
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-lg mx-auto transition-colors">
+    <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-5xl mx-auto transition-colors">
       {/* Header */}
       <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-b-[40px] p-6 pb-12 text-white shadow-lg shadow-indigo-100 dark:shadow-none relative">
         <button 

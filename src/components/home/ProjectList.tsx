@@ -14,7 +14,7 @@ export function ProjectList() {
   };
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-lg mx-auto transition-colors">
+    <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-5xl mx-auto transition-colors">
       <div className="p-6 pb-2">
         <div className="flex items-center gap-3 mb-6">
           <button 

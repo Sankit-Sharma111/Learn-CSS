@@ -17,7 +17,7 @@ export function TopicList() {
   };
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-lg mx-auto transition-colors">
+    <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-5xl mx-auto transition-colors">
       <div className="bg-pink-500 rounded-b-[40px] p-6 pb-12 text-white shadow-lg shadow-pink-100 dark:shadow-none relative">
         <button 
           onClick={() => setHomeView("chapters")}

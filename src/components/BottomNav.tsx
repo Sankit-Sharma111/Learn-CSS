@@ -13,7 +13,7 @@ export function BottomNav() {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 flex justify-around py-3 pb-6 z-50 transition-colors">
+    <div className="fixed bottom-0 left-0 right-0 max-w-5xl mx-auto bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 flex justify-around py-3 pb-6 z-50 transition-colors">
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = activeTab === item.id;

@@ -20,6 +20,9 @@ interface AppState {
   userName: string;
   setUserName: (name: string) => void;
   
+  profileImage: string | null;
+  setProfileImage: (image: string | null) => void;
+  
   editorHtml: string;
   setEditorHtml: (html: string | ((prev: string) => string)) => void;
   editorCss: string;
@@ -62,6 +65,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const [completedChapters, setCompletedChapters] = useState<string[]>(() => getStorage("completedChapters", []));
   const [userName, setUserName] = useState(() => getStorage("userName", "Guest"));
+  const [profileImage, setProfileImage] = useState<string | null>(() => getStorage("profileImage", null));
   const [isDarkMode, setIsDarkMode] = useState(() => getStorage("isDarkMode", false));
   const [language, setLanguage] = useState<Language>(() => getStorage("language", "en"));
   const [isCertificateGenerated, setIsCertificateGenerated] = useState(() => getStorage("isCertificateGenerated", false));
@@ -74,6 +78,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem("userName", JSON.stringify(userName));
   }, [userName]);
+
+  useEffect(() => {
+    localStorage.setItem("profileImage", JSON.stringify(profileImage));
+  }, [profileImage]);
 
   useEffect(() => {
     localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode));
@@ -111,6 +119,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         selectedTopic, setSelectedTopic,
         completedChapters, completeChapter,
         userName, setUserName,
+        profileImage, setProfileImage,
         editorHtml, setEditorHtml,
         editorCss, setEditorCss,
         isDarkMode, setIsDarkMode,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Settings2, Award, Moon, Sun, Globe, ChevronRight } from "lucide-react";
 import { useAppContext } from "../../AppContext";
 import { courseData } from "../../data/courseData";
@@ -9,6 +9,7 @@ import { translations } from "../../data/translations";
 export function ProfileTab() {
   const { 
     userName, setUserName, 
+    profileImage, setProfileImage,
     completedChapters, 
     isDarkMode, setIsDarkMode,
     language, setLanguage,
@@ -20,6 +21,19 @@ export function ProfileTab() {
   const [editName, setEditName] = useState(userName);
   const [showCertForm, setShowCertForm] = useState(false);
   const [showCertView, setShowCertView] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const totalChapters = courseData.length;
   const completedCount = completedChapters.length;
@@ -45,16 +59,30 @@ export function ProfileTab() {
   }
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-24 max-w-lg mx-auto p-5 dark:bg-slate-900 transition-colors">
+    <div className="bg-slate-50 min-h-screen pb-24 max-w-5xl mx-auto p-5 dark:bg-slate-900 transition-colors">
       {/* Profile Card */}
       <div className="bg-[#1a1c2e] rounded-3xl p-6 text-white mb-6 relative overflow-hidden shadow-xl shadow-indigo-900/20 dark:shadow-none">
         <div className="absolute right-0 top-0 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl"></div>
         <div className="absolute left-0 bottom-0 w-48 h-48 bg-pink-500/20 rounded-full blur-3xl"></div>
         
         <div className="flex items-center gap-4 relative z-10 mb-8">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-indigo-500 flex items-center justify-center text-2xl font-bold border-2 border-white/20 shrink-0">
-            {userName.charAt(0).toUpperCase()}
+          <div 
+            className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-indigo-500 flex items-center justify-center text-2xl font-bold border-2 border-white/20 shrink-0 cursor-pointer overflow-hidden"
+            onClick={() => fileInputRef.current?.click()}
+          >
+            {profileImage ? (
+              <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+            ) : (
+              userName.charAt(0).toUpperCase()
+            )}
           </div>
+          <input 
+            type="file" 
+            ref={fileInputRef} 
+            onChange={handleImageUpload} 
+            accept="image/*" 
+            className="hidden" 
+          />
           <div className="flex-1">
             {isEditing ? (
               <div className="flex gap-2">

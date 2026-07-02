@@ -49,7 +49,7 @@ export function QuizScreen() {
 
   if (showResults) {
     return (
-      <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-lg mx-auto flex flex-col items-center justify-center p-6 text-center transition-colors">
+      <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-5xl mx-auto flex flex-col items-center justify-center p-6 text-center transition-colors">
         {passed ? (
           <CheckCircle2 size={80} className="text-green-500 dark:text-green-400 mb-6" />
         ) : (
@@ -73,7 +73,7 @@ export function QuizScreen() {
   }
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-lg mx-auto flex flex-col transition-colors">
+    <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-24 max-w-5xl mx-auto flex flex-col transition-colors">
       <div className="bg-white dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700 px-4 py-4 flex items-center gap-3 transition-colors">
         <button 
           onClick={() => setHomeView("topics")}

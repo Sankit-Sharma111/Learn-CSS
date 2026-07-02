@@ -7,7 +7,7 @@ export function HomeMain() {
   const t = translations[language];
 
   return (
-    <div className="p-5 pb-24 max-w-lg mx-auto bg-slate-50 dark:bg-slate-900 min-h-screen transition-colors">
+    <div className="p-5 pb-24 max-w-5xl mx-auto bg-slate-50 dark:bg-slate-900 min-h-screen transition-colors">
       <h1 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 tracking-tight">Sankit Accademy</h1>
       
       {/* Premium Banner */}

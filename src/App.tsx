@@ -37,7 +37,7 @@ export default function App() {
   return (
     <AppProvider>
       <div className="font-sans antialiased text-slate-900 dark:text-slate-100 bg-black min-h-screen">
-        <div className="max-w-lg mx-auto bg-slate-50 dark:bg-slate-900 min-h-screen relative shadow-2xl overflow-hidden transition-colors">
+        <div className="max-w-5xl mx-auto bg-slate-50 dark:bg-slate-900 min-h-screen relative shadow-2xl overflow-hidden transition-colors">
           <MainContent />
           <BottomNav />
         </div>

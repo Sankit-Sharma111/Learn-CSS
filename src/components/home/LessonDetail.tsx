@@ -43,7 +43,7 @@ export function LessonDetail() {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 min-h-screen pb-24 max-w-lg mx-auto flex flex-col transition-colors">
+    <div className="bg-white dark:bg-slate-900 min-h-screen pb-24 max-w-5xl mx-auto flex flex-col transition-colors">
       <div className="sticky top-0 bg-white dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700 z-10 px-4 py-4 flex items-center gap-3 transition-colors">
         <button 
           onClick={() => setHomeView("topics")}
@@ -78,8 +78,36 @@ export function LessonDetail() {
                 if (!part.trim()) return null;
 
                 return (
-                  <div key={index} className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-code:text-pink-600 prose-code:bg-pink-50 dark:prose-code:bg-pink-900/30 prose-code:px-1 prose-code:rounded prose-pre:bg-slate-800 prose-pre:text-slate-50">
-                    <Markdown>{part}</Markdown>
+                  <div key={index} className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-code:text-pink-600 prose-code:bg-pink-50 dark:prose-code:bg-pink-900/30 prose-code:px-1 prose-code:rounded prose-pre:bg-slate-800 prose-pre:text-slate-50 prose-img:rounded-2xl prose-img:mx-auto prose-img:shadow-md">
+                    {part.split(/(:::(?:tip|warning|suggestion|mistake)\r?\n[\s\S]*?\r?\n:::)/).map((subPart, subIndex) => {
+                      const containerMatch = subPart.match(/^:::(tip|warning|suggestion|mistake)\r?\n([\s\S]*?)\r?\n:::$/);
+                      if (containerMatch) {
+                        const type = containerMatch[1];
+                        const content = containerMatch[2];
+                        const isGreen = type === 'tip' || type === 'suggestion';
+                        
+                        return (
+                          <div key={subIndex} className={`p-4 my-6 rounded-2xl border-l-4 shadow-sm not-prose ${
+                            isGreen 
+                              ? 'bg-emerald-50 border-emerald-500 text-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-100' 
+                              : 'bg-red-50 border-red-500 text-red-900 dark:bg-red-900/20 dark:text-red-100'
+                          }`}>
+                            <div className={`font-bold mb-2 flex items-center gap-2 ${
+                              isGreen ? 'text-emerald-700 dark:text-emerald-300' : 'text-red-700 dark:text-red-300'
+                            }`}>
+                              {type === 'tip' && '💡 Tip'}
+                              {type === 'suggestion' && '🚀 Suggestion'}
+                              {type === 'warning' && '⚠️ Warning'}
+                              {type === 'mistake' && '❌ Common Mistake'}
+                            </div>
+                            <div className="prose prose-sm max-w-none dark:prose-invert prose-p:last:mb-0 prose-p:first:mt-0">
+                              <Markdown>{content}</Markdown>
+                            </div>
+                          </div>
+                        );
+                      }
+                      return <Markdown key={subIndex}>{subPart}</Markdown>;
+                    })}
                   </div>
                 );
               })}
