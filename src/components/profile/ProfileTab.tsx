@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Settings2, Award, Moon, Sun, Globe, ChevronRight } from "lucide-react";
 import { useAppContext } from "../../AppContext";
-import { courseData } from "../../data/courseData";
+import { courseData } from "../../content";
 import { CertificateForm } from "./CertificateForm";
 import { CertificateView } from "./CertificateView";
 import { translations } from "../../data/translations";

@@ -1,0 +1,241 @@
+export const chapter05 = {
+  "id": "ch5",
+  "title_en": "Chapter 5: CSS Box Model",
+  "title_hi": "अध्याय 5: CSS बॉक्स मॉडल",
+  "topics": [
+    {
+      "id": "t5-1",
+      "title_en": "i. Content Area",
+      "title_hi": "i. सामग्री क्षेत्र",
+      "content_en": "### i. Content Area\n\n**i. Content Area** is a fundamental concept in CSS. Understanding it allows you to build better, more robust web pages and master the art of styling.\n\n### Core Concepts\n\nWhen working with i. Content Area, it's important to remember that it integrates with the rest of the CSS ecosystem. This provides:\n\n1. **Flexibility:** Allows dynamic adjustments and fluid designs.\n2. **Scalability:** Helps manage large codebases efficiently.\n3. **Maintainability:** Makes your code easier to read and update over time.\n\n### How it works\n\nHere is a practical example showing i. Content Area in action. Observe how the properties interact to create the final visual output:\n\n[[SANDBOX_0]]\n\n:::tip\n**Best Practice:** Always test your i. Content Area implementation across different browsers and screen sizes to ensure full compatibility!\n:::\n\n:::mistake\n**Common Mistake:** Forgetting to close tags or missing semicolons when writing i. Content Area rules can break your entire stylesheet. Always validate your code.\n:::",
+      "content_hi": "### i. सामग्री क्षेत्र\n\n**i. Content Area** CSS में एक मूलभूत अवधारणा है। इसे समझने से आप बेहतर, अधिक मजबूत वेब पेज बना सकते हैं और स्टाइलिंग की कला में महारत हासिल कर सकते हैं।\n\n### मुख्य अवधारणाएँ\n\ni. Content Area के साथ काम करते समय, यह याद रखना महत्वपूर्ण है कि यह बाकी CSS इकोसिस्टम के साथ एकीकृत होता है। यह प्रदान करता है:\n\n1. **लचीलापन:** गतिशील समायोजन और तरल डिजाइन की अनुमति देता है।\n2. **स्केलेबिलिटी:** बड़े कोडबेस को कुशलतापूर्वक प्रबंधित करने में मदद करता है।\n3. **रखरखाव:** समय के साथ आपके कोड को पढ़ने और अपडेट करने में आसान बनाता है।\n\n### यह कैसे काम करता है\n\nयहाँ i. Content Area को काम करते हुए दिखाने वाला एक व्यावहारिक उदाहरण दिया गया है। ध्यान दें कि अंतिम दृश्य आउटपुट बनाने के लिए गुण कैसे इंटरैक्ट करते हैं:\n\n[[SANDBOX_0]]\n\n:::tip\n**सर्वोत्तम अभ्यास:** पूर्ण संगतता सुनिश्चित करने के लिए हमेशा विभिन्न ब्राउज़रों और स्क्रीन आकारों में अपने i. Content Area कार्यान्वयन का परीक्षण करें!\n:::\n\n:::mistake\n**सामान्य गलती:** i. Content Area नियम लिखते समय टैग बंद करना भूल जाना या अर्धविराम (semicolons) छोड़ देना आपकी पूरी स्टाइलशीट को तोड़ सकता है। हमेशा अपने कोड को मान्य करें।\n:::",
+      "sandboxCode": {
+        "html": "<div class=\"example-box\">\n  <h2>i. Content Area Example</h2>\n  <p>Learn CSS step by step!</p>\n</div>",
+        "css": ".example-box {\n  background-color: #f0f8ff;\n  border: 2px solid #007bff;\n  padding: 20px;\n  border-radius: 8px;\n}"
+      },
+      "sandboxes": [
+        {
+          "html": "<div class=\"example-box\">\n  <h2>i. Content Area Example</h2>\n  <p>Learn CSS step by step!</p>\n</div>",
+          "css": ".example-box {\n  background-color: #f0f8ff;\n  border: 2px solid #007bff;\n  padding: 20px;\n  border-radius: 8px;\n  text-align: center;\n}"
+        }
+      ]
+    },
+    {
+      "id": "t5-2",
+      "title_en": "ii. Box Sizing",
+      "title_hi": "ii. बॉक्स साइज़िंग",
+      "content_en": "### ii. Box Sizing\n\n**ii. Box Sizing** is a fundamental concept in CSS. Understanding it allows you to build better, more robust web pages and master the art of styling.\n\n### Core Concepts\n\nWhen working with ii. Box Sizing, it's important to remember that it integrates with the rest of the CSS ecosystem. This provides:\n\n1. **Flexibility:** Allows dynamic adjustments and fluid designs.\n2. **Scalability:** Helps manage large codebases efficiently.\n3. **Maintainability:** Makes your code easier to read and update over time.\n\n### How it works\n\nHere is a practical example showing ii. Box Sizing in action. Observe how the properties interact to create the final visual output:\n\n[[SANDBOX_0]]\n\n:::tip\n**Best Practice:** Always test your ii. Box Sizing implementation across different browsers and screen sizes to ensure full compatibility!\n:::\n\n:::mistake\n**Common Mistake:** Forgetting to close tags or missing semicolons when writing ii. Box Sizing rules can break your entire stylesheet. Always validate your code.\n:::",
+      "content_hi": "### ii. बॉक्स साइज़िंग\n\n**ii. Box Sizing** CSS में एक मूलभूत अवधारणा है। इसे समझने से आप बेहतर, अधिक मजबूत वेब पेज बना सकते हैं और स्टाइलिंग की कला में महारत हासिल कर सकते हैं।\n\n### मुख्य अवधारणाएँ\n\nii. Box Sizing के साथ काम करते समय, यह याद रखना महत्वपूर्ण है कि यह बाकी CSS इकोसिस्टम के साथ एकीकृत होता है। यह प्रदान करता है:\n\n1. **लचीलापन:** गतिशील समायोजन और तरल डिजाइन की अनुमति देता है।\n2. **स्केलेबिलिटी:** बड़े कोडबेस को कुशलतापूर्वक प्रबंधित करने में मदद करता है।\n3. **रखरखाव:** समय के साथ आपके कोड को पढ़ने और अपडेट करने में आसान बनाता है।\n\n### यह कैसे काम करता है\n\nयहाँ ii. Box Sizing को काम करते हुए दिखाने वाला एक व्यावहारिक उदाहरण दिया गया है। ध्यान दें कि अंतिम दृश्य आउटपुट बनाने के लिए गुण कैसे इंटरैक्ट करते हैं:\n\n[[SANDBOX_0]]\n\n:::tip\n**सर्वोत्तम अभ्यास:** पूर्ण संगतता सुनिश्चित करने के लिए हमेशा विभिन्न ब्राउज़रों और स्क्रीन आकारों में अपने ii. Box Sizing कार्यान्वयन का परीक्षण करें!\n:::\n\n:::mistake\n**सामान्य गलती:** ii. Box Sizing नियम लिखते समय टैग बंद करना भूल जाना या अर्धविराम (semicolons) छोड़ देना आपकी पूरी स्टाइलशीट को तोड़ सकता है। हमेशा अपने कोड को मान्य करें।\n:::",
+      "sandboxCode": {
+        "html": "<div class=\"example-box\">\n  <h2>ii. Box Sizing Example</h2>\n  <p>Learn CSS step by step!</p>\n</div>",
+        "css": ".example-box {\n  background-color: #f0f8ff;\n  border: 2px solid #007bff;\n  padding: 20px;\n  border-radius: 8px;\n}"
+      },
+      "sandboxes": [
+        {
+          "html": "<div class=\"example-box\">\n  <h2>ii. Box Sizing Example</h2>\n  <p>Learn CSS step by step!</p>\n</div>",
+          "css": ".example-box {\n  background-color: #f0f8ff;\n  border: 2px solid #007bff;\n  padding: 20px;\n  border-radius: 8px;\n  text-align: center;\n}"
+        }
+      ]
+    },
+    {
+      "id": "t5-3",
+      "title_en": "iii. Overflow",
+      "title_hi": "iii. अतिप्रवाह",
+      "content_en": "### iii. Overflow\n\n**iii. Overflow** is a fundamental concept in CSS. Understanding it allows you to build better, more robust web pages and master the art of styling.\n\n### Core Concepts\n\nWhen working with iii. Overflow, it's important to remember that it integrates with the rest of the CSS ecosystem. This provides:\n\n1. **Flexibility:** Allows dynamic adjustments and fluid designs.\n2. **Scalability:** Helps manage large codebases efficiently.\n3. **Maintainability:** Makes your code easier to read and update over time.\n\n### How it works\n\nHere is a practical example showing iii. Overflow in action. Observe how the properties interact to create the final visual output:\n\n[[SANDBOX_0]]\n\n:::tip\n**Best Practice:** Always test your iii. Overflow implementation across different browsers and screen sizes to ensure full compatibility!\n:::\n\n:::mistake\n**Common Mistake:** Forgetting to close tags or missing semicolons when writing iii. Overflow rules can break your entire stylesheet. Always validate your code.\n:::",
+      "content_hi": "### iii. अतिप्रवाह\n\n**iii. Overflow** CSS में एक मूलभूत अवधारणा है। इसे समझने से आप बेहतर, अधिक मजबूत वेब पेज बना सकते हैं और स्टाइलिंग की कला में महारत हासिल कर सकते हैं।\n\n### मुख्य अवधारणाएँ\n\niii. Overflow के साथ काम करते समय, यह याद रखना महत्वपूर्ण है कि यह बाकी CSS इकोसिस्टम के साथ एकीकृत होता है। यह प्रदान करता है:\n\n1. **लचीलापन:** गतिशील समायोजन और तरल डिजाइन की अनुमति देता है।\n2. **स्केलेबिलिटी:** बड़े कोडबेस को कुशलतापूर्वक प्रबंधित करने में मदद करता है।\n3. **रखरखाव:** समय के साथ आपके कोड को पढ़ने और अपडेट करने में आसान बनाता है।\n\n### यह कैसे काम करता है\n\nयहाँ iii. Overflow को काम करते हुए दिखाने वाला एक व्यावहारिक उदाहरण दिया गया है। ध्यान दें कि अंतिम दृश्य आउटपुट बनाने के लिए गुण कैसे इंटरैक्ट करते हैं:\n\n[[SANDBOX_0]]\n\n:::tip\n**सर्वोत्तम अभ्यास:** पूर्ण संगतता सुनिश्चित करने के लिए हमेशा विभिन्न ब्राउज़रों और स्क्रीन आकारों में अपने iii. Overflow कार्यान्वयन का परीक्षण करें!\n:::\n\n:::mistake\n**सामान्य गलती:** iii. Overflow नियम लिखते समय टैग बंद करना भूल जाना या अर्धविराम (semicolons) छोड़ देना आपकी पूरी स्टाइलशीट को तोड़ सकता है। हमेशा अपने कोड को मान्य करें।\n:::",
+      "sandboxCode": {
+        "html": "<div class=\"example-box\">\n  <h2>iii. Overflow Example</h2>\n  <p>Learn CSS step by step!</p>\n</div>",
+        "css": ".example-box {\n  background-color: #f0f8ff;\n  border: 2px solid #007bff;\n  padding: 20px;\n  border-radius: 8px;\n}"
+      },
+      "sandboxes": [
+        {
+          "html": "<div class=\"example-box\">\n  <h2>iii. Overflow Example</h2>\n  <p>Learn CSS step by step!</p>\n</div>",
+          "css": ".example-box {\n  background-color: #f0f8ff;\n  border: 2px solid #007bff;\n  padding: 20px;\n  border-radius: 8px;\n  text-align: center;\n}"
+        }
+      ]
+    }
+  ]
+};
+
+export const chapter05Quiz = [
+  {
+    "id": "q1",
+    "question_en": "Question 1 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 1?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q2",
+    "question_en": "Question 2 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 2?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q3",
+    "question_en": "Question 3 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 3?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q4",
+    "question_en": "Question 4 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 4?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q5",
+    "question_en": "Question 5 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 5?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q6",
+    "question_en": "Question 6 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 6?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q7",
+    "question_en": "Question 7 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 7?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q8",
+    "question_en": "Question 8 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 8?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q9",
+    "question_en": "Question 9 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 9?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "id": "q10",
+    "question_en": "Question 10 about Chapter 5: CSS Box Model?",
+    "question_hi": "अध्याय 5: CSS बॉक्स मॉडल के बारे में प्रश्न 10?",
+    "options_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "options_hi": [
+      "विकल्प ए",
+      "विकल्प बी",
+      "विकल्प सी",
+      "विकल्प डी"
+    ],
+    "correctAnswerIndex": 0
+  }
+];

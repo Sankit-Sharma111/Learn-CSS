@@ -1,6 +1,6 @@
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { useAppContext } from "../../AppContext";
-import { courseData } from "../../data/courseData";
+import { courseData } from "../../content";
 import { translations } from "../../data/translations";
 
 export function ChapterList() {
