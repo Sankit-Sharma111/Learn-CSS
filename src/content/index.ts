@@ -28,15 +28,21 @@ import { chapter14, chapter14Quiz } from './chapter-14';
 export { chapter14, chapter14Quiz };
 import { chapter15, chapter15Quiz } from './chapter-15';
 export { chapter15, chapter15Quiz };
-import { chapter16, chapter16Quiz } from './chapter-16';
-export { chapter16, chapter16Quiz };
-import { chapter17, chapter17Quiz } from './chapter-17';
-export { chapter17, chapter17Quiz };
-import { chapter18, chapter18Quiz } from './chapter-18';
-export { chapter18, chapter18Quiz };
-import { chapter19, chapter19Quiz } from './chapter-19';
-export { chapter19, chapter19Quiz };
-import { chapter20, chapter20Quiz } from './chapter-20';
-export { chapter20, chapter20Quiz };
 
-export const courseData = [chapter01, chapter02, chapter03, chapter04, chapter05, chapter06, chapter07, chapter08, chapter09, chapter10, chapter11, chapter12, chapter13, chapter14, chapter15, chapter16, chapter17, chapter18, chapter19, chapter20];
+export const courseData = [
+  { ...chapter01, quiz: chapter01Quiz },
+  { ...chapter02, quiz: chapter02Quiz },
+  { ...chapter03, quiz: chapter03Quiz },
+  { ...chapter04, quiz: chapter04Quiz },
+  { ...chapter05, quiz: chapter05Quiz },
+  { ...chapter06, quiz: chapter06Quiz },
+  { ...chapter07, quiz: chapter07Quiz },
+  { ...chapter08, quiz: chapter08Quiz },
+  { ...chapter09, quiz: chapter09Quiz },
+  { ...chapter10, quiz: chapter10Quiz },
+  { ...chapter11, quiz: chapter11Quiz },
+  { ...chapter12, quiz: chapter12Quiz },
+  { ...chapter13, quiz: chapter13Quiz },
+  { ...chapter14, quiz: chapter14Quiz },
+  { ...chapter15, quiz: chapter15Quiz },
+];

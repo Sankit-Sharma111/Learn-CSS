@@ -1,240 +1,513 @@
 export const chapter02 = {
-  "id": "advanced-css-selectors",
-  "title_en": "Chapter 2: Advanced CSS Selectors",
-  "title_hi": "अध्याय 2: एडवांस्ड CSS सेलेक्टर्स",
-  "topics": [
+  id: "ch2",
+  title_en: "Chapter 2: Basic Selectors & Grouping",
+  title_hi: "अध्याय 2: मूल चयनकर्ता (Basic Selectors) और ग्रुपिंग",
+  topics: [
     {
-      "id": "combinators-hierarchy",
-      "title_en": "Combinators & Hierarchy",
-      "title_hi": "कॉम्बिनेटर्स और हायरार्की",
-      "content_en": "### Understanding CSS Combinators\n\nCSS combinators are powerful tools that allow you to select elements based on their relationship to other elements in the HTML document structure. They help you target specific elements with greater precision, making your CSS more robust and maintainable.\n\nThere are four main types of combinators:\n\n1.  **Descendant Selector** (space)\n2.  **Child Selector** (>)\n3.  **Adjacent Sibling Selector** (+)\n4.  **General Sibling Selector** (~)\n\nLet's explore each one.\n\n#### 1. Descendant Selector (space)\n\nThe descendant selector selects all elements that are descendants of a specified element. A descendant can be a child, grandchild, great-grandchild, and so on.\n\n**Syntax:** `ancestor descendant { property: value; }`\n\n**Example:**\n```css\ndiv p {\n  color: blue;\n}\n```\nThis rule will apply `color: blue;` to all `<p>` elements that are inside a `<div>` element, regardless of how deep they are nested.\n\n[[SANDBOX_0]]\n\n#### 2. Child Selector (>)\n\nThe child selector selects all elements that are direct children of a specified element. It's stricter than the descendant selector, only targeting immediate children.\n\n**Syntax:** `parent > child { property: value; }`\n\n**Example:**\n```css\nul > li {\n  list-style-type: square;\n}\n```\nThis rule will apply `list-style-type: square;` only to `<li>` elements that are direct children of a `<ul>` element. It will not affect `<li>` elements nested further down (e.g., inside another `<ul>` within the first `<li>`).\n\n[[SANDBOX_1]]\n\n#### 3. Adjacent Sibling Selector (+)\n\nThe adjacent sibling selector selects an element that is immediately preceded by a specified sibling element. Both elements must have the same parent.\n\n**Syntax:** `element1 + element2 { property: value; }`\n\n**Example:**\n```css\nh2 + p {\n  margin-top: 0;\n}\n```\nThis rule will apply `margin-top: 0;` to a `<p>` element only if it immediately follows an `<h2>` element, and both are siblings (share the same parent).\n\n[[SANDBOX_2]]\n\n#### 4. General Sibling Selector (~)\n\nThe general sibling selector selects all sibling elements that follow a specified element. Like the adjacent sibling selector, both elements must have the same parent. However, it doesn't have to be immediately adjacent.\n\n**Syntax:** `element1 ~ element2 { property: value; }`\n\n**Example:**\n```css\nh2 ~ p {\n  font-style: italic;\n}\n```\nThis rule will apply `font-style: italic;` to all `<p>` elements that are siblings of an `<h2>` element and appear *after* it in the document flow.\n\n:::tip\nUnderstanding the difference between descendant and child selectors, and adjacent vs. general sibling selectors, is crucial for writing precise and efficient CSS.\n:::\n\n",
-      "content_hi": "### CSS कॉम्बिनेटर्स को समझना\n\nCSS कॉम्बिनेटर्स शक्तिशाली टूल्स हैं जो आपको HTML डॉक्यूमेंट स्ट्रक्चर में अन्य एलिमेंट्स के साथ उनके संबंध के आधार पर एलिमेंट्स को सेलेक्ट करने की अनुमति देते हैं। वे आपको अधिक सटीकता के साथ विशिष्ट एलिमेंट्स को टारगेट करने में मदद करते हैं, जिससे आपकी CSS अधिक मजबूत और रखरखाव योग्य बनती है।\n\nकॉम्बिनेटर्स के चार मुख्य प्रकार हैं:\n\n1.  **डिसेंडेंट सेलेक्टर** (space)\n2.  **चाइल्ड सेलेक्टर** (>)\n3.  **एडजेसेंट सिबलिंग सेलेक्टर** (+)\n4.  **जनरल सिबलिंग सेलेक्टर** (~)\n\nआइए प्रत्येक को एक्सप्लोर करें।\n\n#### 1. डिसेंडेंट सेलेक्टर (space)\n\nडिसेंडेंट सेलेक्टर उन सभी एलिमेंट्स को सेलेक्ट करता है जो एक निर्दिष्ट एलिमेंट के डिसेंडेंट होते हैं। एक डिसेंडेंट एक चाइल्ड, ग्रैंडचाइल्ड, ग्रेट-ग्रैंडचाइल्ड, और इसी तरह कुछ भी हो सकता है।\n\n**सिंटैक्स:** `ancestor descendant { property: value; }`\n\n**उदाहरण:**\n```css\ndiv p {\n  color: blue;\n}\n```\nयह रूल `color: blue;` को सभी `<p>` एलिमेंट्स पर लागू करेगा जो एक `<div>` एलिमेंट के अंदर हैं, चाहे वे कितनी भी गहराई में नेस्टेड हों।\n\n[[SANDBOX_0]]\n\n#### 2. चाइल्ड सेलेक्टर (>)\n\nचाइल्ड सेलेक्टर उन सभी एलिमेंट्स को सेलेक्ट करता है जो एक निर्दिष्ट एलिमेंट के डायरेक्ट चाइल्ड होते हैं। यह डिसेंडेंट सेलेक्टर की तुलना में अधिक सख्त है, केवल तत्काल चाइल्ड को टारगेट करता है।\n\n**सिंटैक्स:** `parent > child { property: value; }`\n\n**उदाहरण:**\n```css\nul > li {\n  list-style-type: square;\n}\n```\nयह रूल `list-style-type: square;` को केवल उन `<li>` एलिमेंट्स पर लागू करेगा जो एक `<ul>` एलिमेंट के डायरेक्ट चाइल्ड हैं। यह आगे नेस्टेड `<li>` एलिमेंट्स (जैसे, पहले `<li>` के भीतर एक और `<ul>` के अंदर) को प्रभावित नहीं करेगा।\n\n[[SANDBOX_1]]\n\n#### 3. एडजेसेंट सिबलिंग सेलेक्टर (+)\n\nएडजेसेंट सिबलिंग सेलेक्टर उस एलिमेंट को सेलेक्ट करता है जिसके ठीक पहले एक निर्दिष्ट सिबलिंग एलिमेंट होता है। दोनों एलिमेंट्स का पैरेंट समान होना चाहिए।\n\n**सिंटैक्स:** `element1 + element2 { property: value; }`\n\n**उदाहरण:**\n```css\nh2 + p {\n  margin-top: 0;\n}\n```\nयह रूल `margin-top: 0;` को एक `<p>` एलिमेंट पर तभी लागू करेगा जब वह तुरंत एक `<h2>` एलिमेंट के बाद आता है, और दोनों सिबलिंग (एक ही पैरेंट साझा करते हैं) हों।\n\n[[SANDBOX_2]]\n\n#### 4. जनरल सिबलिंग सेलेक्टर (~)\n\nजनरल सिबलिंग सेलेक्टर उन सभी सिबलिंग एलिमेंट्स को सेलेक्ट करता है जो एक निर्दिष्ट एलिमेंट के बाद आते हैं। एडजेसेंट सिबलिंग सेलेक्टर की तरह, दोनों एलिमेंट्स का पैरेंट समान होना चाहिए। हालांकि, यह तुरंत एडजेसेंट होना जरूरी नहीं है।\n\n**सिंटैक्स:** `element1 ~ element2 { property: value; }`\n\n**उदाहरण:**\n```css\nh2 ~ p {\n  font-style: italic;\n}\n```\nयह रूल `font-style: italic;` को उन सभी `<p>` एलिमेंट्स पर लागू करेगा जो एक `<h2>` एलिमेंट के सिबलिंग हैं और डॉक्यूमेंट फ्लो में उसके *बाद* दिखाई देते हैं।\n\n:::tip\nडिसेंडेंट और चाइल्ड सेलेक्टर्स, और एडजेसेंट बनाम जनरल सिबलिंग सेलेक्टर्स के बीच के अंतर को समझना सटीक और कुशल CSS लिखने के लिए महत्वपूर्ण है।\n:::\n\n",
-      "sandboxes": [
+      id: "t2-1",
+      title_en: "What are Selectors & The Universal Selector",
+      title_hi: "चयनकर्ता क्या हैं और यूनिवर्सल चयनकर्ता (*)",
+      content_en: `### What is a CSS Selector?
+In CSS, a **Selector** is a pattern used to select (or target) the HTML elements you want to style. Imagine selectors as pointers or addresses that tell the browser: *"Hey, go find this specific element on the webpage and apply these styles to it."*
+Without selectors, browser wouldn't know whether you want to make a heading blue or a button red!
+---
+### The Universal Selector (\`*\`)
+The **Universal Selector** is represented by an asterisk (\`*\`). It acts like a wildcard and targets **every single element** on the HTML page—including headings, paragraphs, links, images, and even the \`<body>\` itself.
+#### Syntax:
+\`\`\`css
+* {
+  property: value;
+}
+\`\`\`
+#### When Should You Use It?
+The Universal Selector is most commonly used at the very top of a stylesheet for **CSS Resets**. By default, web browsers add their own margins and paddings to elements like \`<h1>\`, \`<p>\`, and \`<body>\`. Using \`*\` allows you to strip away those default spaces so your design looks identical across all browsers (Chrome, Safari, Firefox).
+#### Example of a Basic Reset:
+\`\`\`css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+\`\`\`
+In the interactive sandbox below, notice how applying a style to \`*\` changes the font and border for every single tag inside the preview!
+[[SANDBOX_0]]
+:::tip
+**Pro Tip:** While the universal selector is great for resets, avoid using it for complex styling across massive websites, as forcing the browser to restyle every single DOM element can slightly impact performance.
+:::`,
+      content_hi: `### CSS Selector क्या है?
+CSS में **Selector** वह माध्यम (pattern) होता है जिसका उपयोग उन HTML एलिमेंट्स को चुनने (target करने) के लिए किया जाता है जिन्हें आप डिज़ाइन या स्टाइल करना चाहते हैं। Selectors को आप एक पते (address) की तरह समझ सकते हैं जो ब्राउज़र को बताता है: *"हे ब्राउज़र, वेब पेज पर इस विशेष एलिमेंट को ढूंढो और उस पर ये स्टाइल लगा दो।"*
+Selectors के बिना ब्राउज़र को यह पता ही नहीं चलेगा कि आप हेडिंग को नीला करना चाहते हैं या बटन को लाल!
+---
+### यूनिवर्सल चयनकर्ता / Universal Selector (\`*\`)
+**Universal Selector** को तारांकन चिह्न यानी Asterisk (\`*\`) से दर्शाया जाता है। यह एक वाइल्डकार्ड की तरह काम करता है और वेब पेज के **प्रत्येक एलिमेंट** को एक साथ टारगेट करता है—जिसमें हेडिंग, पैराग्राफ, लिंक, इमेज और यहाँ तक कि \`<body>\` टैग भी शामिल है।
+#### सिंटैक्स (Syntax):
+\`\`\`css
+* {
+  property: value;
+}
+\`\`\`
+#### इसका उपयोग कब करना चाहिए?
+Universal Selector का सबसे अधिक उपयोग CSS फ़ाइल की शुरुआत में **CSS Resets** के लिए किया जाता है। डिफ़ॉल्ट रूप से, सभी वेब ब्राउज़र \`<h1>\`, \`<p>\`, और \`<body>\` जैसे एलिमेंट्स में अपनी तरफ से कुछ खाली जगह (margin और padding) जोड़ देते हैं। \`*\` का उपयोग करके हम उस डिफ़ॉल्ट जगह को शून्य (0) कर सकते हैं, जिससे हमारी वेबसाइट सभी ब्राउज़रों (Chrome, Safari, Firefox) में एक जैसी दिखाई दे।
+#### बेसिक रीसेट का उदाहरण:
+\`\`\`css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+\`\`\`
+नीचे दिए गए इंटरैक्टिव सैंडबॉक्स में देखें कि कैसे \`*\` पर स्टाइल लगाने से पूरे पेज के हर एक टैग का फ़ॉन्ट और बॉर्डर बदल गया है!
+[[SANDBOX_0]]
+:::tip
+**प्रो टिप:** यद्यपि यूनिवर्सल सिलेक्टर रीसेट के लिए बेहतरीन है, लेकिन बहुत बड़ी वेबसाइटों पर जटिल स्टाइलिंग के लिए इसका अधिक उपयोग करने से बचें, क्योंकि यह ब्राउज़र को हर एक छोटे-बड़े एलिमेंट को स्टाइल करने के लिए मजबूर करता है।
+:::`,
+      sandboxes: [
         {
-          "css": ".container p {\n  color: blue;\n  font-weight: bold;\n}",
-          "html": "<div class=\"container\">\n  <p>This is a direct child paragraph.</p>\n  <span>\n    <p>This is a nested paragraph.</p>\n  </span>\n</div>\n<p>This is an outside paragraph.</p>"
-        },
-        {
-          "css": ".menu > li {\n  background-color: lightblue;\n  padding: 5px;\n  margin-bottom: 2px;\n}",
-          "html": "<ul class=\"menu\">\n  <li>Item 1</li>\n  <li>Item 2\n    <ul>\n      <li>Sub-item 2.1</li>\n      <li>Sub-item 2.2</li>\n    </ul>\n  </li>\n  <li>Item 3</li>\n</ul>"
-        },
-        {
-          "css": "h2 + p {\n  color: green;\n  font-size: 1.1em;\n}",
-          "html": "<div class=\"section\">\n  <h2>Section Title 1</h2>\n  <p>This paragraph immediately follows h2.</p>\n  <p>This paragraph does not immediately follow h2.</p>\n</div>\n<div class=\"section\">\n  <h3>Section Title 2</h3>\n  <p>This paragraph immediately follows h3.</p>\n</div>"
-        },
-        {
-          "css": "h1 ~ p {\n  background-color: yellow;\n  border-left: 3px solid orange;\n  padding-left: 5px;\n}",
-          "html": "<div class=\"article\">\n  <h1>Article Heading</h1>\n  <p>First paragraph.</p>\n  <div>\n    <p>Nested paragraph (not a sibling).</p>\n  </div>\n  <p>Second paragraph.</p>\n  <span>Some text</span>\n  <p>Third paragraph.</p>\n</div>"
+          html: `<h1>Welcome to Lesson 2</h1>\n<p>This paragraph and the button below are all styled by the asterisk (*).</p>\n<button>Click Me</button>`,
+          css: `/* The Universal Selector targets EVERYTHING */\n* {\n  font-family: Arial, sans-serif;\n  color: #2c3e50;\n  border: 1px dashed #3498db;\n  padding: 4px;\n}`
         }
       ]
     },
     {
-      "id": "pseudo-classes",
-      "title_en": "Pseudo-classes",
-      "title_hi": "स्यूडो-क्लासेस",
-      "content_en": "### Introduction to Pseudo-classes\n\nPseudo-classes are keywords added to selectors that specify a special state of the selected element(s). They allow you to style elements not just based on their position in the document tree, but also based on user interaction, their state, or their position relative to siblings.\n\n**Syntax:** `selector:pseudo-class { property: value; }`\n\nLet's look at some common pseudo-classes.\n\n#### 1. UI Pseudo-classes\n\nThese pseudo-classes respond to user interaction or the state of a link.\n\n*   **`:hover`**: Selects an element when the user's mouse pointer is over it.\n*   **`:active`**: Selects an element when it is being activated by the user (e.g., clicked).\n*   **`:focus`**: Selects an element when it has received focus (e.g., from a keyboard tab or click). Commonly used with form elements and links.\n*   **`:link`**: Selects unvisited links.\n*   **`:visited`**: Selects visited links.\n\n**Example:**\n```css\na:link { color: blue; }\na:visited { color: purple; }\na:hover { color: red; text-decoration: underline; }\na:active { color: green; }\n\nbutton:hover {\n  background-color: #f0f0f0;\n}\ninput:focus {\n  border: 2px solid blue;\n}\n```\n\n[[SANDBOX_4]]\n\n#### 2. Structural Pseudo-classes\n\nThese pseudo-classes select elements based on their position within a parent element's list of children.\n\n*   **`:first-child`**: Selects the first child of its parent.\n*   **`:last-child`**: Selects the last child of its parent.\n*   **`:nth-child(n)`**: Selects the nth child of its parent. `n` can be a number, a keyword (like `odd` or `even`), or a formula (like `2n+1`).\n*   **`:nth-of-type(n)`**: Similar to `:nth-child`, but selects the nth element of a *specific type* among its siblings.\n*   **`:only-child`**: Selects an element that is the only child of its parent.\n\n**Example:**\n```css\nli:first-child {\n  font-weight: bold;\n}\np:nth-child(2n) { /* Selects even paragraphs */\n  background-color: lightgray;\n}\nspan:only-child {\n  color: green;\n}\n```\n\n[[SANDBOX_5]]\n\n#### 3. Form Pseudo-classes\n\nThese pseudo-classes target form elements based on their state.\n\n*   **`:checked`**: Selects radio buttons or checkboxes that are checked.\n*   **`:disabled`**: Selects form elements that are disabled.\n*   **`:enabled`**: Selects form elements that are enabled.\n*   **`:read-only`**: Selects input elements with the `readonly` attribute.\n*   **`:required`**: Selects input elements with the `required` attribute.\n\n**Example:**\n```css\ninput[type=\"checkbox\"]:checked + label {\n  font-weight: bold;\n  color: blue;\n}\ninput:disabled {\n  background-color: #eee;\n  cursor: not-allowed;\n}\n```\n\n[[SANDBOX_6]]\n\n#### 4. Negation Pseudo-class (`:not()`)\n\nThe `:not()` pseudo-class selects elements that do *not* match the specified selector. It's useful for excluding specific elements from a selection.\n\n**Syntax:** `selector:not(another-selector) { property: value; }`\n\n**Example:**\n```css\ndiv:not(.special) {\n  border: 1px solid gray;\n}\n```\nThis will apply a border to all `<div>` elements *except* those with the class `special`.\n\n:::warning\nThe `:not()` pseudo-class can only take a simple selector (like a type selector, class selector, ID selector, or another pseudo-class) as an argument. It cannot contain combinators or other `:not()` pseudo-classes.\n:::\n\n[[SANDBOX_7]]\n",
-      "content_hi": "### स्यूडो-क्लासेस का परिचय\n\nस्यूडो-क्लासेस सेलेक्टर्स में जोड़े गए कीवर्ड होते हैं जो सेलेक्टेड एलिमेंट(s) की एक विशेष स्थिति को निर्दिष्ट करते हैं। वे आपको एलिमेंट्स को न केवल डॉक्यूमेंट ट्री में उनकी स्थिति के आधार पर, बल्कि यूजर इंटरेक्शन, उनकी स्थिति, या सिबलिंग के सापेक्ष उनकी स्थिति के आधार पर स्टाइल करने की अनुमति देते हैं।\n\n**सिंटैक्स:** `selector:pseudo-class { property: value; }`\n\nआइए कुछ सामान्य स्यूडो-क्लासेस देखें।\n\n#### 1. UI स्यूडो-क्लासेस\n\nये स्यूडो-क्लासेस यूजर इंटरेक्शन या लिंक की स्थिति पर प्रतिक्रिया करते हैं।\n\n*   **`:hover`**: जब यूजर का माउस पॉइंटर किसी एलिमेंट पर होता है तो उसे सेलेक्ट करता है।\n*   **`:active`**: जब कोई एलिमेंट यूजर द्वारा एक्टिवेट किया जा रहा होता है (जैसे, क्लिक किया गया) तो उसे सेलेक्ट करता है।\n*   **`:focus`**: जब किसी एलिमेंट को फोकस प्राप्त होता है (जैसे, कीबोर्ड टैब या क्लिक से) तो उसे सेलेक्ट करता है। आमतौर पर फॉर्म एलिमेंट्स और लिंक्स के साथ उपयोग किया जाता है।\n*   **`:link`**: अनविजिटेड लिंक्स को सेलेक्ट करता है।\n*   **`:visited`**: विजिटेड लिंक्स को सेलेक्ट करता है।\n\n**उदाहरण:**\n```css\na:link { color: blue; }\na:visited { color: purple; }\na:hover { color: red; text-decoration: underline; }\na:active { color: green; }\n\nbutton:hover {\n  background-color: #f0f0f0;\n}\ninput:focus {\n  border: 2px solid blue;\n}\n```\n\n[[SANDBOX_4]]\n\n#### 2. स्ट्रक्चरल स्यूडो-क्लासेस\n\nये स्यूडो-क्लासेस पैरेंट एलिमेंट के चाइल्ड की लिस्ट में उनकी स्थिति के आधार पर एलिमेंट्स को सेलेक्ट करते हैं।\n\n*   **`:first-child`**: अपने पैरेंट के पहले चाइल्ड को सेलेक्ट करता है।\n*   **`:last-child`**: अपने पैरेंट के अंतिम चाइल्ड को सेलेक्ट करता है।\n*   **`:nth-child(n)`**: अपने पैरेंट के nth चाइल्ड को सेलेक्ट करता है। `n` एक संख्या, एक कीवर्ड (जैसे `odd` या `even`), या एक फ़ॉर्मूला (जैसे `2n+1`) हो सकता है।\n*   **`:nth-of-type(n)`**: `:nth-child` के समान, लेकिन अपने सिबलिंग के बीच एक *विशिष्ट प्रकार* के nth एलिमेंट को सेलेक्ट करता है।\n*   **`:only-child`**: उस एलिमेंट को सेलेक्ट करता है जो अपने पैरेंट का एकमात्र चाइल्ड है।\n\n**उदाहरण:**\n```css\nli:first-child {\n  font-weight: bold;\n}\np:nth-child(2n) { /* Selects even paragraphs */\n  background-color: lightgray;\n}\nspan:only-child {\n  color: green;\n}\n```\n\n[[SANDBOX_5]]\n\n#### 3. फॉर्म स्यूडो-क्लासेस\n\nये स्यूडो-क्लासेस फॉर्म एलिमेंट्स को उनकी स्थिति के आधार पर टारगेट करते हैं।\n\n*   **`:checked`**: चेक किए गए रेडियो बटन या चेकबॉक्स को सेलेक्ट करता है।\n*   **`:disabled`**: डिसेबल किए गए फॉर्म एलिमेंट्स को सेलेक्ट करता है।\n*   **`:enabled`**: एनेबल किए गए फॉर्म एलिमेंट्स को सेलेक्ट करता है।\n*   **`:read-only`**: `readonly` एट्रीब्यूट वाले इनपुट एलिमेंट्स को सेलेक्ट करता है।\n*   **`:required`**: `required` एट्रीब्यूट वाले इनपुट एलिमेंट्स को सेलेक्ट करता है।\n\n**उदाहरण:**\n```css\ninput[type=\"checkbox\"]:checked + label {\n  font-weight: bold;\n  color: blue;\n}\ninput:disabled {\n  background-color: #eee;\n  cursor: not-allowed;\n}\n```\n\n[[SANDBOX_6]]\n\n#### 4. नेगेशन स्यूडो-क्लास (`:not()`)\n\n`:not()` स्यूडो-क्लास उन एलिमेंट्स को सेलेक्ट करता है जो निर्दिष्ट सेलेक्टर से मेल नहीं खाते हैं। यह सिलेक्शन से विशिष्ट एलिमेंट्स को बाहर करने के लिए उपयोगी है।\n\n**सिंटैक्स:** `selector:not(another-selector) { property: value; }`\n\n**उदाहरण:**\n```css\ndiv:not(.special) {\n  border: 1px solid gray;\n}\n```\nयह `<div>` एलिमेंट्स पर एक बॉर्डर लागू करेगा *सिवाय* उन पर जिनमें `special` क्लास है।\n\n:::warning\n`:not()` स्यूडो-क्लास केवल एक सिंपल सेलेक्टर (जैसे एक टाइप सेलेक्टर, क्लास सेलेक्टर, ID सेलेक्टर, या एक और स्यूडो-क्लास) को एक आर्ग्यूमेंट के रूप में ले सकता है। इसमें कॉम्बिनेटर्स या अन्य `:not()` स्यूडो-क्लासेस शामिल नहीं हो सकते हैं।\n:::\n\n[[SANDBOX_7]]\n",
-      "sandboxes": [
+      id: "t2-2",
+      title_en: "Element (Type) & Grouping Selectors",
+      title_hi: "एलिमेंट (Type) और ग्रुपिंग चयनकर्ता",
+      content_en: `### 1. Element (or Type) Selector
+The **Element Selector** directly targets all HTML elements that match a specific tag name. Regardless of where that tag appears on the page, if the tag matches, the style will be applied.
+#### Syntax:
+\`\`\`css
+tagname {
+  property: value;
+}
+\`\`\`
+#### Example:
+If you write:
+\`\`\`css
+p {
+  color: darkgreen;
+  font-size: 16px;
+}
+\`\`\`
+This rule will automatically find **every single \`<p>\` tag** on your web page and turn its text dark green. You don't need to add any class or ID to those paragraphs!
+---
+### 2. Grouping Selectors (The Comma \`,\`)
+Sometimes, you want multiple different elements to share the exact same styling. For instance, you might want your \`<h1>\`, \`<h2>\`, and \`<h3>\` headings to all share the same font family and text color. 
+Instead of writing three separate CSS blocks and repeating the same code, you can use a **Grouping Selector** by separating the tag names with a comma (\`,\`).
+#### Without Grouping (Repetitive & Bad Practice):
+\`\`\`css
+h1 { color: navy; font-family: Arial; }
+h2 { color: navy; font-family: Arial; }
+p { color: navy; font-family: Arial; }
+\`\`\`
+#### With Grouping (Clean & DRY - Don't Repeat Yourself):
+\`\`\`css
+h1, h2, p {
+  color: navy;
+  font-family: Arial;
+}
+\`\`\`
+The comma \`,\` basically translates to the word **"AND"** in English: *"Style h1 AND h2 AND p with these rules."*
+[[SANDBOX_0]]
+:::note
+**Important Note:** Make sure not to leave a trailing comma at the end of your list (e.g., \`h1, h2, {\`). Doing so will make the entire CSS rule invalid, and the browser will ignore it completely!
+:::`,
+      content_hi: `### 1. एलिमेंट या टाइप चयनकर्ता (Element Selector)
+**Element Selector** सीधे उन सभी HTML एलिमेंट्स को टारगेट करता है जिनका टैग नाम आपके लिखे नाम से मेल खाता है। चाहे वह टैग पेज पर कहीं भी हो, यदि नाम मैच होता है, तो स्टाइल उस पर लागू हो जाएगी।
+#### सिंटैक्स (Syntax):
+\`\`\`css
+tagname {
+  property: value;
+}
+\`\`\`
+#### उदाहरण:
+यदि आप लिखते हैं:
+\`\`\`css
+p {
+  color: darkgreen;
+  font-size: 16px;
+}
+\`\`\`
+यह नियम स्वतः ही आपके वेब पेज के **हर एक \`<p>\` (पैराग्राफ) टैग** को खोजेगा और उसके टेक्स्ट को गहरे हरे रंग का बना देगा। आपको उन पैराग्राफ्स में कोई क्लास या आईडी जोड़ने की आवश्यकता नहीं है!
+---
+### 2. ग्रुपिंग चयनकर्ता (Grouping Selector - अल्पविराम \`,\`)
+कभी-कभी आप चाहते हैं कि कई अलग-अलग एलिमेंट्स पर एक जैसी स्टाइल लागू हो। उदाहरण के लिए, आप चाह सकते हैं कि आपकी \`<h1>\`, \`<h2>\`, और \`<h3>\` तीनों हेडिंग्स का फ़ॉन्ट और रंग एक समान हो।
+इसके लिए तीन अलग-अलग CSS ब्लॉक लिखकर एक ही कोड को बार-बार दोहराने के बजाय, आप अल्पविराम यानी कॉमा (\`,\`) का उपयोग करके **Grouping Selector** बना सकते हैं।
+#### बिना ग्रुपिंग के (बार-बार लिखना - गलत तरीका):
+\`\`\`css
+h1 { color: navy; font-family: Arial; }
+h2 { color: navy; font-family: Arial; }
+p { color: navy; font-family: Arial; }
+\`\`\`
+#### ग्रुपिंग के साथ (साफ़ और सही तरीका):
+\`\`\`css
+h1, h2, p {
+  color: navy;
+  font-family: Arial;
+}
+\`\`\`
+यहाँ कॉमा (\`,\`) का मतलब हिंदी के शब्द **"और (AND)"** जैसा होता है: *"h1 और h2 और p तीनों पर ये नियम लगाओ।"*
+[[SANDBOX_0]]
+:::note
+**महत्वपूर्ण नोट:** ध्यान रखें कि अपनी लिस्ट के अंत में कॉमा न छोड़ें (जैसे \`h1, h2, {\`)। ऐसा करने से पूरा CSS नियम अमान्य (invalid) हो जाता है और ब्राउज़र उसे पूरी तरह अनदेखा कर देता है!
+:::`,
+      sandboxes: [
         {
-          "css": ".link-example {\n  color: blue;\n  text-decoration: none;\n}\n.link-example:hover {\n  color: red;\n  text-decoration: underline;\n}\n.link-example:active {\n  color: green;\n}\n\n.btn-example {\n  padding: 10px 15px;\n  background-color: lightgray;\n  border: 1px solid gray;\n  cursor: pointer;\n  margin-left: 20px;\n}\n.btn-example:hover {\n  background-color: #ddd;\n}\n.btn-example:active {\n  background-color: #bbb;\n  transform: translateY(1px);\n}\n\ninput[type=\"text\"] {\n  padding: 8px;\n  border: 1px solid #ccc;\n  margin-left: 20px;\n}\ninput[type=\"text\"]:focus {\n  border-color: dodgerblue;\n  box-shadow: 0 0 5px dodgerblue;\n  outline: none;\n}",
-          "html": "<a href=\"#\" class=\"link-example\">Hover over me</a>\n<button class=\"btn-example\">Click me</button>\n<input type=\"text\" placeholder=\"Focus here\">"
-        },
+          html: `<h1>Main Heading (h1)</h1>\n<h2>Sub Heading (h2)</h2>\n<p>This is paragraph 1.</p>\n<p>This is paragraph 2.</p>\n<span>This is a span element.</span>`,
+          css: `/* Grouping Selector: Styles h1, h2, and p together */\nh1, h2, p {\n  color: #2a52be;\n  background-color: #f0f4f8;\n  padding: 5px;\n  border-left: 4px solid #2a52be;\n}\n\n/* Element Selector: Only targets span */\nspan {\n  color: #e74c3c;\n  font-weight: bold;\n}`
+        }
+      ]
+    },
+    {
+      id: "t2-3",
+      title_en: "Class Selectors (.) vs ID Selectors (#)",
+      title_hi: "क्लास चयनकर्ता (.) बनाम आईडी चयनकर्ता (#)",
+      content_en: `While element selectors are great, what if you have ten paragraphs on a page and only want to make **one** of them highlighted in yellow? You can't use \`p { ... }\` because that would highlight all ten!
+To style specific elements individually or in custom groups, we use **Class** and **ID** selectors.
+---
+### 1. The Class Selector (\`.\`)
+A **Class Selector** targets any HTML element that has a matching \`class\` attribute. To select a class in your CSS file, you must type a **period or dot (\`.\`)** followed immediately by the class name.
+#### Syntax:
+\`\`\`css
+.className {
+  property: value;
+}
+\`\`\`
+#### Key Rules for Classes:
+1. **Reusability:** You can use the exact same class name on as many HTML elements as you want (e.g., multiple buttons, cards, or text highlights).
+2. **Multiple Classes:** A single HTML element can have more than one class separated by a space: \`<div class="card shadow highlighted">\`.
+---
+### 2. The ID Selector (\`#\`)
+An **ID Selector** targets a specific HTML element with a matching \`id\` attribute. To select an ID in your CSS file, you must type a **hash or pound symbol (\`#\`)** followed immediately by the ID name.
+#### Syntax:
+\`\`\`css
+#idName {
+  property: value;
+}
+\`\`\`
+#### Key Rules for IDs:
+1. **Strictly Unique:** An ID name can only be used **ONCE** per HTML document. Think of an ID like a person's Aadhaar or Passport number—no two elements on the same page should ever share the same ID!
+2. **Single ID:** An element can only have one ID assigned to it.
+[[SANDBOX_0]]
+---
+### Class vs ID: When to use what?
+
+| Feature | Class Selector (\`.\`) | ID Selector (\`#\`) |
+| :--- | :--- | :--- |
+| **Symbol Used** | Dot (\`.\`) | Hash (\`#\`) |
+| **Uniqueness** | Can be used on **unlimited** elements. | Must be **unique (used only once)** per page. |
+| **Primary Use Case** | General styling, reusable buttons, cards, grid layouts. | Unique layout sections (e.g., \`#main-header\`), anchor links, JavaScript targets. |
+
+:::warning
+**Best Practice:** In modern professional web development, developers rely on **Class selectors for 95% of their styling** because they are reusable and flexible. Use IDs sparingly for CSS!
+:::`,
+      content_hi: `यद्यपि एलिमेंट सिलेक्टर्स बहुत उपयोगी होते हैं, लेकिन क्या होगा यदि आपके पेज पर दस पैराग्राफ हैं और आप उनमें से केवल **किसी एक** को पीले रंग में हाइलाइट करना चाहते हैं? आप \`p { ... }\` का उपयोग नहीं कर सकते क्योंकि वह दसों पैराग्राफ को पीला कर देगा!
+विशेष एलिमेंट्स को अलग से या अपने मन मुताबिक समूहों में स्टाइल करने के लिए हम **Class** और **ID** सिलेक्टर्स का उपयोग करते हैं।
+---
+### 1. क्लास चयनकर्ता / Class Selector (\`.\`)
+**Class Selector** किसी भी उस HTML एलिमेंट को टारगेट करता है जिसमें संबंधित \`class\` एट्रिब्यूट मौजूद हो। अपनी CSS फ़ाइल में किसी क्लास को चुनने के लिए, आपको क्लास के नाम से ठीक पहले एक **डॉट या बिंदु (\`.\`)** लगाना होता है।
+#### सिंटैक्स (Syntax):
+\`\`\`css
+.className {
+  property: value;
+}
+\`\`\`
+#### क्लास के मुख्य नियम:
+1. **पुनः उपयोग (Reusability):** आप एक ही क्लास नाम का उपयोग जितने चाहें उतने HTML एलिमेंट्स पर कर सकते हैं (जैसे कई बटनों, कार्ड्स या हाइलाइट किए गए टेक्स्ट पर)।
+2. **एक से अधिक क्लास:** एक ही HTML एलिमेंट को स्पेस (space) देकर एक से अधिक क्लासेज भी दी जा सकती हैं: \`<div class="card shadow highlighted">\`।
+---
+### 2. आईडी चयनकर्ता / ID Selector (\`#\`)
+**ID Selector** किसी विशेष HTML एलिमेंट को उसके \`id\` एट्रिब्यूट के आधार पर टारगेट करता है। अपनी CSS फ़ाइल में किसी ID को चुनने के लिए, आपको ID के नाम से ठीक पहले एक **हैश चिह्न (\`#\`)** लगाना होता है।
+#### सिंटैक्स (Syntax):
+\`\`\`css
+#idName {
+  property: value;
+}
+\`\`\`
+#### ID के मुख्य नियम:
+1. **पूरी तरह अद्वितीय (Unique):** एक ID नाम का उपयोग पूरे HTML डॉक्यूमेंट में केवल **एक बार** ही किया जा सकता है। ID को किसी व्यक्ति के आधार कार्ड या पासपोर्ट नंबर की तरह समझें—एक ही पेज पर दो एलिमेंट्स की ID कभी भी समान नहीं होनी चाहिए!
+2. **सिंगल ID:** एक एलिमेंट को केवल एक ही ID दी जा सकती है।
+[[SANDBOX_0]]
+---
+### Class बनाम ID: किसका उपयोग कब करें?
+
+| विशेषता | क्लास चयनकर्ता (\`.\`) | आईडी चयनकर्ता (\`#\`) |
+| :--- | :--- | :--- |
+| **प्रयुक्त चिह्न** | डॉट (\`.\`) | हैश (\`#\`) |
+| **अद्वितीयता (Uniqueness)** | **अनगिनत** एलिमेंट्स पर उपयोग किया जा सकता है। | एक पेज पर केवल **एक बार (Unique)** उपयोग होना चाहिए। |
+| **मुख्य उपयोग** | सामान्य स्टाइलिंग, रीयूजेबल बटन, कार्ड और लेआउट। | पेज के खास हिस्से (जैसे \`#main-header\`), एंकर लिंक या JavaScript के लिए। |
+
+:::warning
+**बेस्ट प्रैक्टिस:** आधुनिक वेब डेवलपमेंट में, डेवलपर्स **अपनी 95% स्टाइलिंग के लिए Class सिलेक्टर्स का ही उपयोग करते हैं** क्योंकि वे लचीले और पुनः उपयोग करने योग्य होते हैं। CSS में ID का उपयोग बहुत कम करें!
+:::`,
+      sandboxes: [
         {
-          "css": ".list-items li:first-child {\n  color: green;\n  font-weight: bold;\n}\n.list-items li:last-child {\n  color: red;\n  text-decoration: underline;\n}\n.list-items li:nth-child(odd) {\n  background-color: #f0f0f0;\n}\n.list-items li:nth-child(2n) { /* Even items */\n  background-color: #e0e0e0;\n}\n\n.parent-div p:nth-of-type(2) {\n  border: 2px dashed orange;\n}\n\n.single-child-container span:only-child {\n  background-color: lightgreen;\n  padding: 5px;\n}",
-          "html": "<ul class=\"list-items\">\n  <li>First item</li>\n  <li>Second item</li>\n  <li>Third item</li>\n  <li>Fourth item</li>\n  <li>Fifth item</li>\n</ul>\n\n<div class=\"parent-div\">\n  <p>This is the first paragraph.</p>\n  <span>This is a span.</span>\n  <p>This is the second paragraph.</p>\n  <p>This is the third paragraph.</p>\n</div>\n\n<div class=\"single-child-container\">\n  <span>I am the only child.</span>\n</div>\n<div class=\"multi-child-container\">\n  <span>I am not the only child.</span>\n  <span>I am another child.</span>\n</div>"
-        },
+          html: `\n<h1 id="top-banner">Special Offer Banner</h1>\n\n\n<button class="btn">Buy Now</button>\n<button class="btn">Learn More</button>\n<button class="btn">Contact Us</button>`,
+          css: `/* Styling the Unique ID with Hash (#) */\n#top-banner {\n  background-color: #f39c12;\n  color: white;\n  text-align: center;\n  padding: 15px;\n  border-radius: 5px;\n}\n\n/* Styling the Reusable Class with Dot (.) */\n.btn {\n  background-color: #27ae60;\n  color: white;\n  border: none;\n  padding: 10px 15px;\n  margin: 5px;\n  cursor: pointer;\n  border-radius: 3px;\n}`
+        }
+      ]
+    },
+    {
+      id: "t2-4",
+      title_en: "Basic CSS Priority (Specificity Intro)",
+      title_hi: "मूल CSS प्राथमिकता (Specificity का परिचय)",
+      content_en: `### What happens when Selectors Clash?
+Now that you know about Element, Class, and ID selectors, an important question arises: **What happens if you apply conflicting styles to the exact same element using different selectors?**
+For example, look at this HTML tag:
+\`\`\`html
+<p id="unique-text" class="colored-text">Hello World!</p>
+\`\`\`
+If your CSS looks like this:
+\`\`\`css
+p { color: black; }           /* Element Selector */
+.colored-text { color: blue; } /* Class Selector */
+#unique-text { color: red; }   /* ID Selector */
+\`\`\`
+Which color will the text actually become? Black, Blue, or Red?
+---
+### The Specificity Hierarchy
+To resolve conflicts like this, web browsers calculate a score called **Specificity** (or Priority). The rule with the highest priority wins and overrides the others.
+Here is the basic hierarchy from **Lowest to Highest priority**:
+1. **Element Selectors (\`p\`, \`h1\`, \`div\`) ➔ Lowest Priority**
+   They are very general, so they are easily overridden.
+2. **Class Selectors (\`.btn\`, \`.card\`) ➔ Medium Priority**
+   A class selector will **always beat** an element selector!
+3. **ID Selectors (\`#header\`, \`#banner\`) ➔ High Priority**
+   An ID selector is very specific. It will **always beat both** classes and element selectors!
+4. **Inline CSS (\`style="..."\`) ➔ Highest Priority**
+   Styles written directly inside the HTML tag override all external CSS selectors.
+#### The Winner in our example above is: RED!
+Even though \`p\` and \`.colored-text\` try to make it black or blue, the **ID (\`#unique-text\`) has the highest specificity score**, so the browser renders the paragraph in **red**.
+[[SANDBOX_0]]
+### The Golden Rule of Specificity
+When memorizing priorities, just remember this simple formula:
+\`Inline Style > ID (#) > Class (.) > Element Tag\`
+:::tip
+**What if two rules have the exact SAME specificity?**
+If two classes (e.g., \`.color-blue\` and \`.color-green\`) target the same element, **The Cascade wins!** This means whichever CSS rule is written **last (further down in the stylesheet)** will take effect.
+:::`,
+      content_hi: `### जब सिलेक्टर्स आपस में टकराएं तो क्या होता है?
+अब जबकि आप एलिमेंट, क्लास और आईडी सिलेक्टर्स के बारे में जान चुके हैं, तो एक महत्वपूर्ण प्रश्न उठता है: **क्या होगा यदि आप अलग-अलग सिलेक्टर्स का उपयोग करके एक ही एलिमेंट पर अलग-अलग (विरोधाभासी) स्टाइल लगा दें?**
+उदाहरण के लिए, इस HTML टैग को देखें:
+\`\`\`html
+<p id="unique-text" class="colored-text">Hello World!</p>
+\`\`\`
+यदि आपकी CSS कुछ इस प्रकार है:
+\`\`\`css
+p { color: black; }           /* एलिमेंट सिलेक्टर */
+.colored-text { color: blue; } /* क्लास सिलेक्टर */
+#unique-text { color: red; }   /* आईडी सिलेक्टर */
+\`\`\`
+तो टेक्स्ट का रंग वास्तव में क्या होगा? काला, नीला, या लाल?
+---
+### प्राथमिकता का क्रम (Specificity Hierarchy)
+इस प्रकार के टकरावों को सुलझाने के लिए, वेब ब्राउज़र एक स्कोर की गणना करते हैं जिसे **Specificity (विशेषता या प्राथमिकता)** कहा जाता है। जिस नियम की प्राथमिकता सबसे अधिक होती है, वह जीत जाता है और बाकी नियमों को दबा देता है।
+यहाँ प्राथमिकता का मूल क्रम दिया गया है (**सबसे कम से सबसे अधिक प्राथमिकता**):
+1. **एलिमेंट सिलेक्टर्स (\`p\`, \`h1\`, \`div\`) ➔ सबसे कम प्राथमिकता**
+   ये बहुत सामान्य होते हैं, इसलिए इन्हें आसानी से ओवरराइड किया जा सकता है।
+2. **क्लास सिलेक्टर्स (\`.btn\`, \`.card\`) ➔ मध्यम प्राथमिकता**
+   एक क्लास सिलेक्टर **हमेशा** एलिमेंट सिलेक्टर को हरा देगा!
+3. **आईडी सिलेक्टर्स (\`#header\`, \`#banner\`) ➔ उच्च प्राथमिकता**
+   आईडी सिलेक्टर बहुत विशिष्ट होता है। यह क्लास और एलिमेंट सिलेक्टर **दोनों को हमेशा हरा देगा!**
+4. **इनलाइन CSS (\`style="..."\`) ➔ सर्वोच्च प्राथमिकता**
+   सीधे HTML टैग के अंदर लिखी गई स्टाइल सभी बाहरी CSS सिलेक्टर्स पर भारी पड़ती है।
+#### हमारे ऊपर वाले उदाहरण में विजेता है: लाल (RED)!
+भले ही \`p\` और \`.colored-text\` इसे काला या नीला करने की कोशिश कर रहे हों, लेकिन **ID (\`#unique-text\`) का प्राथमिकता स्कोर सबसे अधिक है**, इसलिए ब्राउज़र पैराग्राफ को **लाल** रंग में दिखाएगा।
+[[SANDBOX_0]]
+### प्राथमिकता का सुनहरा नियम (Golden Rule)
+प्राथमिकता को याद रखने के लिए बस यह आसान सूत्र याद रखें:
+\`Inline Style > ID (#) > Class (.) > Element Tag\`
+:::tip
+**क्या होगा यदि दो नियमों की प्राथमिकता बिल्कुल समान हो?**
+यदि दो क्लासेज (जैसे \`.color-blue\` और \`.color-green\`) एक ही एलिमेंट को टारगेट कर रही हैं, तो **The Cascade (कैस्केड नियम) जीतता है!** इसका मतलब है कि जो CSS नियम फ़ाइल में **सबसे नीचे (बाद में)** लिखा होगा, वही लागू होगा।
+:::`,
+      sandboxes: [
         {
-          "css": "input[type=\"checkbox\"]:checked + label {\n  color: blue;\n  font-weight: bold;\n}\ninput[type=\"radio\"]:checked + label {\n  color: purple;\n  font-style: italic;\n}\n\ninput:enabled {\n  border: 1px solid green;\n}\ninput:disabled {\n  background-color: #f0f0f0;\n  border: 1px dashed gray;\n  cursor: not-allowed;\n}\ninput:required {\n  border-color: orange;\n}\ninput:read-only {\n  background-color: #eee;\n  color: #555;\n}",
-          "html": "<form>\n  <input type=\"checkbox\" id=\"agree\" checked>\n  <label for=\"agree\">I agree to terms</label><br><br>\n\n  <input type=\"radio\" id=\"option1\" name=\"choice\" value=\"1\">\n  <label for=\"option1\">Option 1</label><br>\n  <input type=\"radio\" id=\"option2\" name=\"choice\" value=\"2\" checked>\n  <label for=\"option2\">Option 2</label><br><br>\n\n  <input type=\"text\" placeholder=\"Enabled input\"><br><br>\n  <input type=\"text\" placeholder=\"Disabled input\" disabled><br><br>\n  <input type=\"text\" placeholder=\"Required input\" required><br><br>\n  <input type=\"text\" placeholder=\"Read-only input\" readonly value=\"Cannot edit\">\n</form>"
-        },
-        {
-          "css": ".box {\n  padding: 10px;\n  margin: 5px;\n  border: 1px solid #ccc;\n}\n\ndiv:not(.special) {\n  background-color: lightblue;\n}\n\n/* This will not apply to the paragraph with class 'box' */\n.box:not(div) {\n  font-style: italic;\n  color: gray;\n}",
-          "html": "<div class=\"box\">This is a regular box.</div>\n<div class=\"box special\">This is a special box.</div>\n<div class=\"box\">Another regular box.</div>\n<p class=\"box\">This is a paragraph box.</p>"
+          html: `\n<h2 id="win-id" class="try-class">Who wins the color battle?</h2>\n\n<p class="try-class">I only have a class and an element tag.</p>`,
+          css: `/* 1. Element Selector (Lowest Priority) */\nh2, p {\n  color: gray;\n  background-color: #f9f9f9;\n  padding: 10px;\n}\n\n/* 2. Class Selector (Medium Priority - Beats Element) */\n.try-class {\n  color: blue; /* Notice how the paragraph turns blue! */\n}\n\n/* 3. ID Selector (High Priority - Beats Both Class & Element) */\n#win-id {\n  color: red; /* Notice how the h2 turns RED despite having the blue class! */\n  border: 2px solid red;\n}`
         }
       ]
     }
   ]
 };
-
 export const chapter02Quiz = [
   {
-    "id": "q1",
-    "question_en": "Which CSS combinator selects all `<p>` elements that are descendants of a `<div>` element, regardless of their nesting level?",
-    "question_hi": "कौन सा CSS कॉम्बिनेटर सभी `<p>` एलिमेंट्स को सेलेक्ट करता है जो एक `<div>` एलिमेंट के डिसेंडेंट हैं, उनकी नेस्टिंग लेवल की परवाह किए बिना?",
-    "options_en": [
-      "`div + p`",
-      "`div > p`",
-      "`div p`",
-      "`div ~ p`"
+    id: "q1",
+    question_en: "Which character is used to represent the Universal Selector in CSS?",
+    question_hi: "CSS में यूनिवर्सल चयनकर्ता (Universal Selector) को दर्शाने के लिए किस चिह्न का उपयोग किया जाता है?",
+    options_en: [
+      ". (Dot)",
+      "# (Hash)",
+      "* (Asterisk)",
+      "$ (Dollar)"
     ],
-    "options_hi": [
-      "`div + p`",
-      "`div > p`",
-      "`div p`",
-      "`div ~ p`"
+    options_hi: [
+      ". (डॉट)",
+      "# (हैश)",
+      "* (तारांकन / Asterisk)",
+      "$ (डॉलर)"
     ],
-    "correctAnswerIndex": 2
+    correctAnswerIndex: 2
   },
   {
-    "id": "q2",
-    "question_en": "The `>` combinator is used to select which type of elements?",
-    "question_hi": "`>` कॉम्बिनेटर का उपयोग किस प्रकार के एलिमेंट्स को सेलेक्ट करने के लिए किया जाता है?",
-    "options_en": [
-      "All descendants",
-      "Direct children",
-      "Adjacent siblings",
-      "General siblings"
+    id: "q2",
+    question_en: "What is the primary use case for the Universal Selector (*)?",
+    question_hi: "यूनिवर्सल चयनकर्ता (*) का सबसे मुख्य उपयोग क्या है?",
+    options_en: [
+      "To style only images",
+      "For CSS Resets (removing default margins and paddings)",
+      "To create animations",
+      "To target only unique buttons"
     ],
-    "options_hi": [
-      "सभी डिसेंडेंट",
-      "डायरेक्ट चाइल्ड",
-      "एडजेसेंट सिबलिंग",
-      "जनरल सिबलिंग"
+    options_hi: [
+      "केवल इमेज को स्टाइल करने के लिए",
+      "CSS Resets के लिए (डिफ़ॉल्ट margin और padding हटाने के लिए)",
+      "एनीमेशन बनाने के लिए",
+      "केवल यूनिक बटनों को टारगेट करने के लिए"
     ],
-    "correctAnswerIndex": 1
+    correctAnswerIndex: 1
   },
   {
-    "id": "q3",
-    "question_en": "What does the CSS rule `h2 + p { color: red; }` do?",
-    "question_hi": "CSS रूल `h2 + p { color: red; }` क्या करता है?",
-    "options_en": [
-      "Colors all `<p>` elements red that are inside an `<h2>`.",
-      "Colors the first `<p>` element red that immediately follows an `<h2>`.",
-      "Colors all `<p>` elements red that follow an `<h2>`.",
-      "Colors all `<p>` elements red that are direct children of an `<h2>`."
+    id: "q3",
+    question_en: "Which character MUST you place before a Class name in your CSS file?",
+    question_hi: "अपनी CSS फ़ाइल में किसी क्लास (Class) के नाम से पहले आपको कौन सा चिह्न लगाना अनिवार्य है?",
+    options_en: [
+  "# (Hash)",
+      ". (Dot / Period)",
+      "> (Greater than)",
+      "& (Ampersand)"
     ],
-    "options_hi": [
-      "सभी `<p>` एलिमेंट्स को लाल रंग देता है जो एक `<h2>` के अंदर हैं।",
-      "पहले `<p>` एलिमेंट को लाल रंग देता है जो तुरंत एक `<h2>` के बाद आता है।",
-      "सभी `<p>` एलिमेंट्स को लाल रंग देता है जो एक `<h2>` के बाद आते हैं।",
-      "सभी `<p>` एलिमेंट्स को लाल रंग देता है जो एक `<h2>` के डायरेक्ट चाइल्ड हैं।"
+    options_hi: [
+      "# (हैश)",
+      ". (डॉट / बिंदु)",
+      "> (ग्रेटर देन)",
+      "& (एम्परसेंड)"
     ],
-    "correctAnswerIndex": 1
+    correctAnswerIndex: 1
   },
   {
-    "id": "q4",
-    "question_en": "Which combinator selects all sibling elements that follow a specified element?",
-    "question_hi": "कौन सा कॉम्बिनेटर उन सभी सिबलिंग एलिमेंट्स को सेलेक्ट करता है जो एक निर्दिष्ट एलिमेंट के बाद आते हैं?",
-    "options_en": [
-      "Descendant selector",
-      "Child selector",
-      "Adjacent sibling selector",
-      "General sibling selector"
+    id: "q4",
+    question_en: "Which character MUST you place before an ID name in your CSS file?",
+    question_hi: "अपनी CSS फ़ाइल में किसी आईडी (ID) के नाम से पहले आपको कौन सा चिह्न लगाना अनिवार्य है?",
+    options_en: [
+      ". (Dot)",
+      "/ (Slash)",
+      "# (Hash / Pound)",
+      "* (Asterisk)"
     ],
-    "options_hi": [
-      "डिसेंडेंट सेलेक्टर",
-      "चाइल्ड सेलेक्टर",
-      "एडजेसेंट सिबलिंग सेलेक्टर",
-      "जनरल सिबलिंग सेलेक्टर"
+    options_hi: [
+      ". (डॉट)",
+      "/ (स्लैश)",
+      "# (हैश)",
+      "* (तारांकन)"
     ],
-    "correctAnswerIndex": 3
+    correctAnswerIndex: 2
   },
   {
-    "id": "q5",
-    "question_en": "To change the background color of a button when the user hovers over it, which pseudo-class would you use?",
-    "question_hi": "जब यूजर किसी बटन पर होवर करता है तो उसका बैकग्राउंड कलर बदलने के लिए, आप किस स्यूडो-क्लास का उपयोग करेंगे?",
-    "options_en": [
-      "`:active`",
-      "`:focus`",
-      "`:hover`",
-      "`:visited`"
+    id: "q5",
+    question_en: "How many times should a specific ID name be used within a single HTML webpage?",
+    question_hi: "एक ही HTML वेब पेज के अंदर किसी विशेष ID नाम का उपयोग कितनी बार किया जाना चाहिए?",
+    options_en: [
+      "As many times as you want",
+      "Maximum 5 times",
+      "Only ONCE (It must be strictly unique)",
+      "At least twice"
     ],
-    "options_hi": [
-      "`:active`",
-      "`:focus`",
-      "`:hover`",
-      "`:visited`"
+    options_hi: [
+      "जितनी बार आप चाहें",
+      "अधिकतम 5 बार",
+      "केवल एक बार (यह पूरी तरह यूनिक होना चाहिए)",
+      "कम से कम दो बार"
     ],
-    "correctAnswerIndex": 2
+    correctAnswerIndex: 2
   },
   {
-    "id": "q6",
-    "question_en": "Which pseudo-class would you use to style the first item in an unordered list?",
-    "question_hi": "एक अनऑर्डर्ड लिस्ट में पहले आइटम को स्टाइल करने के लिए आप किस स्यूडो-क्लास का उपयोग करेंगे?",
-    "options_en": [
-      "`:first`",
-      "`:first-child`",
-      "`:nth-child(1)`",
-      "Both B and C"
+    id: "q6",
+    question_en: "What is the correct syntax for a Grouping Selector to style h1, h2, and p simultaneously?",
+    question_hi: "h1, h2 और p को एक साथ स्टाइल करने के लिए ग्रुपिंग चयनकर्ता (Grouping Selector) का सही सिंटैक्स क्या है?",
+    options_en: [
+      "h1 + h2 + p { color: blue; }",
+      "h1, h2, p { color: blue; }",
+      "h1 h2 p { color: blue; }",
+      "h1 > h2 > p { color: blue; }"
     ],
-    "options_hi": [
-      "`:first`",
-      "`:first-child`",
-      "`:nth-child(1)`",
-      "B और C दोनों"
+    options_hi: [
+      "h1 + h2 + p { color: blue; }",
+      "h1, h2, p { color: blue; }",
+      "h1 h2 p { color: blue; }",
+      "h1 > h2 > p { color: blue; }"
     ],
-    "correctAnswerIndex": 3
+    correctAnswerIndex: 1
   },
   {
-    "id": "q7",
-    "question_en": "How can you select every odd-numbered paragraph element within a container?",
-    "question_hi": "आप एक कंटेनर के भीतर हर विषम-संख्या वाले पैराग्राफ एलिमेंट को कैसे सेलेक्ट कर सकते हैं?",
-    "options_en": [
-      "`p:odd`",
-      "`p:nth-child(odd)`",
-      "`p:nth-of-type(even)`",
-      "`p:first-child`"
+    id: "q7",
+    question_en: "Which selector wins in CSS priority if an element has both a Class and an ID targeting the same property?",
+    question_hi: "यदि किसी एलिमेंट पर Class और ID दोनों से एक ही प्रॉपर्टी (जैसे color) लगाई जाए, तो CSS प्राथमिकता में कौन जीतेगा?",
+    options_en: [
+      "The Class Selector",
+      "The Element Selector",
+      "The ID Selector",
+      "Whichever is written first in HTML"
     ],
-    "options_hi": [
-      "`p:odd`",
-      "`p:nth-child(odd)`",
-      "`p:nth-of-type(even)`",
-      "`p:first-child`"
+    options_hi: [
+      "क्लास चयनकर्ता (Class Selector)",
+      "एलिमेंट चयनकर्ता (Element Selector)",
+      "आईडी चयनकर्ता (ID Selector)",
+      "जो भी HTML में पहले लिखा हो"
     ],
-    "correctAnswerIndex": 1
+    correctAnswerIndex: 2
   },
   {
-    "id": "q8",
-    "question_en": "Which pseudo-class is used to style a checkbox or radio button when it is selected?",
-    "question_hi": "जब एक चेकबॉक्स या रेडियो बटन सेलेक्ट किया जाता है तो उसे स्टाइल करने के लिए किस स्यूडो-क्लास का उपयोग किया जाता है?",
-    "options_en": [
-      "`:selected`",
-      "`:active`",
-      "`:checked`",
-      "`:enabled`"
+    id: "q8",
+    question_en: "Which selector type do professional developers recommend using for around 95% of general styling?",
+    question_hi: "पेशेवर डेवलपर्स लगभग 95% सामान्य स्टाइलिंग के लिए किस प्रकार के चयनकर्ता का उपयोग करने की सलाह देते हैं?",
+    options_en: [
+      "ID Selectors because they are powerful",
+      "Inline Styles for everything",
+      "Universal Selectors for all tags",
+      "Class Selectors because they are reusable and flexible"
     ],
-    "options_hi": [
-      "`:selected`",
-      "`:active`",
-      "`:checked`",
-      "`:enabled`"
+    options_hi: [
+      "ID Selectors क्योंकि वे शक्तिशाली होते हैं",
+      "हर चीज़ के लिए Inline Styles",
+      "सभी टैग्स के लिए Universal Selectors",
+      "Class Selectors क्योंकि वे रीयूजेबल और लचीले होते हैं"
     ],
-    "correctAnswerIndex": 2
+    correctAnswerIndex: 3
   },
   {
-    "id": "q9",
-    "question_en": "What does the `:not()` pseudo-class do?",
-    "question_hi": "`:`not()` स्यूडो-क्लास क्या करता है?",
-    "options_en": [
-      "Selects elements that match a specific selector.",
-      "Selects elements that do NOT match a specific selector.",
-      "Selects elements that are disabled.",
-      "Selects elements that are hidden."
+    id: "q9",
+    question_en: "If two class selectors (e.g., .color-red and .color-green) with EQUAL specificity target the same element, which rule will take effect?",
+    question_hi: "यदि समान प्राथमिकता (Equal Specificity) वाले दो क्लास सिलेक्टर्स (.color-red और .color-green) एक ही एलिमेंट को टारगेट करते हैं, तो कौन सा नियम लागू होगा?",
+    options_en: [
+      "The rule written FIRST in the CSS file",
+      "The rule written LAST (further down) in the CSS file",
+      "The colors will mix together",
+      "Neither will work"
     ],
-    "options_hi": [
-      "उन एलिमेंट्स को सेलेक्ट करता है जो एक विशिष्ट सेलेक्टर से मेल खाते हैं।",
-      "उन एलिमेंट्स को सेलेक्ट करता है जो एक विशिष्ट सेलेक्टर से मेल नहीं खाते हैं।",
-      "उन एलिमेंट्स को सेलेक्ट करता है जो डिसेबल हैं।",
-      "उन एलिमेंट्स को सेलेक्ट करता है जो छिपे हुए हैं।"
+    options_hi: [
+      "जो नियम CSS फ़ाइल में पहले लिखा गया हो",
+      "जो नियम CSS फ़ाइल में सबसे नीचे (बाद में) लिखा गया हो",
+      "दोनों रंग आपस में मिल जाएंगे",
+      "दोनों में से कोई काम नहीं करेगा"
     ],
-    "correctAnswerIndex": 1
+    correctAnswerIndex: 1
   },
   {
-    "id": "q10",
-    "question_en": "Which of the following pseudo-classes is typically used to style an input field when a user is typing in it?",
-    "question_hi": "निम्नलिखित में से कौन सा स्यूडो-क्लास आमतौर पर एक इनपुट फील्ड को स्टाइल करने के लिए उपयोग किया जाता है जब कोई यूजर उसमें टाइप कर रहा होता है?",
-    "options_en": [
-      "`:active`",
-      "`:hover`",
-      "`:visited`",
-      "`:focus`"
+    id: "q10",
+    question_en: "Which of the following has the HIGHEST priority (specificity) in CSS?",
+    question_hi: "निम्नलिखित में से किसकी CSS प्राथमिकता (Specificity) सबसे अधिक होती है?",
+    options_en: [
+      "Element Selector (e.g., p)",
+      "Class Selector (e.g., .box)",
+      "ID Selector (e.g., #box)",
+      "Inline Style (e.g., style='color: red;')"
     ],
-    "options_hi": [
-      "`:active`",
-      "`:hover`",
-      "`:visited`",
-      "`:focus`"
+    options_hi: [
+      "एलिमेंट चयनकर्ता (जैसे p)",
+      "क्लास चयनकर्ता (जैसे .box)",
+      "आईडी चयनकर्ता (जैसे #box)",
+      "इनलाइन स्टाइल (जैसे style='color: red;')"
     ],
-    "correctAnswerIndex": 3
+    correctAnswerIndex: 3
   }
 ];

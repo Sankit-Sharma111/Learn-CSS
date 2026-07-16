@@ -2,13 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import CodeMirror, { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
+import { javascript } from "@codemirror/lang-javascript";
 import { Play, RotateCcw, Sparkles } from "lucide-react";
 import { useAppContext } from "../../AppContext";
 
-type FileType = "html" | "css";
+type FileType = "html" | "css" | "js";
 
 export function EditorTab() {
-  const { editorHtml, setEditorHtml, editorCss, setEditorCss, setActiveTab } = useAppContext();
+  const { editorHtml, setEditorHtml, editorCss, setEditorCss, editorJs, setEditorJs, setActiveTab } = useAppContext();
   const [activeFile, setActiveFile] = useState<FileType>("html");
   const [showPreview, setShowPreview] = useState(false);
   const [aiPrompt, setAiPrompt] = useState("");
@@ -18,6 +19,7 @@ export function EditorTab() {
 
   const htmlExtensions = [html()];
   const cssExtensions = [css()];
+  const jsExtensions = [javascript()];
 
   const updatePreview = () => {
     if (iframeRef.current) {
@@ -30,7 +32,7 @@ export function EditorTab() {
             <head>
               <style>${editorCss}</style>
             </head>
-            <body>${editorHtml}</body>
+            <body>${editorHtml}<script>${editorJs}</script></body>
           </html>
         `);
         doc.close();
@@ -42,14 +44,16 @@ export function EditorTab() {
     if (showPreview) {
       updatePreview();
     }
-  }, [showPreview, editorHtml, editorCss]);
+  }, [showPreview, editorHtml, editorCss, editorJs]);
 
   // Fallback simple append
   const insertSnippet = (snippet: string) => {
     if (activeFile === "html") {
       setEditorHtml(prev => prev + snippet);
-    } else {
+    } else if (activeFile === "css") {
       setEditorCss(prev => prev + snippet);
+    } else {
+      setEditorJs(prev => prev + snippet);
     }
   };
 
@@ -153,6 +157,7 @@ export function EditorTab() {
   const handleReset = () => {
     setEditorHtml("<!-- Write HTML here -->\n");
     setEditorCss("/* Write CSS here */\n");
+    setEditorJs("// Write JS here\n");
   };
 
   const handleAskAI = async () => {
@@ -165,8 +170,9 @@ export function EditorTab() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           prompt: aiPrompt,
-          currentCode: activeFile === "html" ? editorHtml : editorCss,
-          fileType: activeFile,
+          html: editorHtml,
+          css: editorCss,
+          js: editorJs,
         }),
       });
 
@@ -179,7 +185,24 @@ export function EditorTab() {
         throw new Error(data.error);
       }
 
-      insertCodeSnippet(`\n${data.code}\n`);
+      let parsedCode: any = null;
+      try {
+        parsedCode = JSON.parse(data.code);
+      } catch (e) {
+        console.error("Failed to parse JSON code:", data.code);
+      }
+
+      if (parsedCode) {
+        if (parsedCode["index.html"]) setEditorHtml(parsedCode["index.html"]);
+        if (parsedCode["style.css"]) setEditorCss(parsedCode["style.css"]);
+        if (parsedCode["script.js"]) {
+          setEditorJs(parsedCode["script.js"]);
+        }
+      } else {
+        // Fallback if not JSON
+        insertCodeSnippet(`\n${data.code}\n`);
+      }
+      
       setAiPrompt("");
     } catch (error) {
       console.error(error);
@@ -246,6 +269,14 @@ export function EditorTab() {
           </button>
         </div>
         <div className="flex items-center gap-2 px-2 pb-1">
+          <button
+            onClick={() => setActiveFile("js")}
+            className={`px-4 py-2 rounded-t-lg font-bold text-sm flex items-center gap-2 transition-colors ${
+              activeFile === "js" ? "bg-slate-800 text-yellow-400" : "text-slate-500 hover:text-slate-300"
+            }`}
+          >
+            <span className="text-yellow-500">{}</span> script.js
+          </button>
           <button onClick={handleReset} className="text-slate-500 hover:text-slate-300">
              <RotateCcw size={16} />
           </button>
@@ -262,13 +293,14 @@ export function EditorTab() {
       <div className="flex-1 overflow-auto bg-[#282c34]">
         <CodeMirror
           ref={editorRef}
-          value={activeFile === "html" ? editorHtml : editorCss}
+          value={activeFile === "html" ? editorHtml : activeFile === "css" ? editorCss : editorJs}
           height="100%"
           theme="dark"
-          extensions={activeFile === "html" ? htmlExtensions : cssExtensions}
+          extensions={activeFile === "html" ? htmlExtensions : activeFile === "css" ? cssExtensions : jsExtensions}
           onChange={(val) => {
             if (activeFile === "html") setEditorHtml(val);
-            else setEditorCss(val);
+            else if (activeFile === "css") setEditorCss(val);
+            else setEditorJs(val);
           }}
           className="text-sm h-full"
           basicSetup={{
@@ -297,7 +329,7 @@ export function EditorTab() {
               <HelperBtn onClick={() => insertHtmlAttribute("target")}>target</HelperBtn>
               <HelperBtn onClick={() => insertCodeSnippet("<!--  -->", 4)}>&lt;!-- --&gt;</HelperBtn>
             </>
-          ) : (
+          ) : activeFile === "css" ? (
             <>
               <HelperBtn onClick={() => insertCodeSnippet("{\n  \n}", 2)}>{"{ }"}</HelperBtn>
               <HelperBtn onClick={() => insertCodeSnippet("color: ;", 1)}>color:</HelperBtn>
@@ -305,6 +337,15 @@ export function EditorTab() {
               <HelperBtn onClick={() => insertCodeSnippet("margin: ;", 1)}>margin:</HelperBtn>
               <HelperBtn onClick={() => insertCodeSnippet("padding: ;", 1)}>padding:</HelperBtn>
               <HelperBtn onClick={() => insertCodeSnippet("/*  */", 3)}>/* */</HelperBtn>
+            </>
+          ) : (
+            <>
+              <HelperBtn onClick={() => insertCodeSnippet("function () {\n  \n}", 2)}>function</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("console.log();", 2)}>console.log</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("const  =", 2)}>const</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("let  =", 2)}>let</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet('document.querySelector("");', 3)}>querySelector</HelperBtn>
+              <HelperBtn onClick={() => insertCodeSnippet("// ", 0)}>//</HelperBtn>
             </>
           )}
         </div>

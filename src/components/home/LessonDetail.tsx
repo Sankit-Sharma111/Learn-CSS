@@ -1,14 +1,21 @@
+import { AdBanner } from "../AdBanner";
 import { ArrowLeft, Code } from "lucide-react";
 import { useAppContext } from "../../AppContext";
 import Markdown from "react-markdown";
 import { translations } from "../../data/translations";
+import { useEffect } from "react";
 
 export function LessonDetail() {
   const { setHomeView, selectedTopic, setActiveTab, setEditorHtml, setEditorCss, language } = useAppContext();
   const t = translations[language];
 
+  useEffect(() => {
+    if (!selectedTopic) {
+      setHomeView("topics");
+    }
+  }, [selectedTopic, setHomeView]);
+
   if (!selectedTopic) {
-    setHomeView("topics");
     return null;
   }
 
@@ -121,6 +128,7 @@ export function LessonDetail() {
                   ) : null}
                 </div>
               )}
+              <AdBanner />
             </>
           );
         })()}

@@ -1,13 +1,20 @@
+import { AdBanner } from "../AdBanner";
 import { ArrowLeft, BookOpen, ChevronRight } from "lucide-react";
 import { useAppContext } from "../../AppContext";
 import { translations } from "../../data/translations";
+import { useEffect } from "react";
 
 export function TopicList() {
   const { setHomeView, selectedChapter, setSelectedTopic, language } = useAppContext();
   const t = translations[language];
 
+  useEffect(() => {
+    if (!selectedChapter) {
+      setHomeView("chapters");
+    }
+  }, [selectedChapter, setHomeView]);
+
   if (!selectedChapter) {
-    setHomeView("chapters");
     return null;
   }
 
@@ -62,6 +69,7 @@ export function TopicList() {
           <BookOpen size={20} />
           {t.testYourself}
         </button>
+        <AdBanner variant="large" />
       </div>
     </div>
   );

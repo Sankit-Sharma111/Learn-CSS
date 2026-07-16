@@ -1,0 +1,1 @@
+sed -i 's/const validCompletedCount = completedChapters.filter(id => courseData.some(c => c.id === id)).length;/const validCompletedCount = completedChapters.length;/g' src/components/profile/ProfileTab.tsx

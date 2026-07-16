@@ -1,22 +1,27 @@
-import { useState } from "react";
-import { ArrowLeft, CheckCircle2, XCircle } from "lucide-react";
-import { useAppContext } from "../../AppContext";
-import { translations } from "../../data/translations";
-
-export function QuizScreen() {
-  const { setHomeView, selectedChapter, completeChapter, language } = useAppContext();
-  const t = translations[language];
+  import { useState, useEffect } from "react";
+  import { ArrowLeft, CheckCircle2, XCircle } from "lucide-react";
+  import { useAppContext } from "../../AppContext";
+  import { translations } from "../../data/translations";
   
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const [showResults, setShowResults] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const [isAnswered, setIsAnswered] = useState(false);
-
-  if (!selectedChapter || !selectedChapter.quiz) {
-    setHomeView("topics");
-    return null;
-  }
+  export function QuizScreen() {
+    const { setHomeView, selectedChapter, completeChapter, language } = useAppContext();
+    const t = translations[language];
+    
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [score, setScore] = useState(0);
+    const [showResults, setShowResults] = useState(false);
+    const [selectedOption, setSelectedOption] = useState<number | null>(null);
+    const [isAnswered, setIsAnswered] = useState(false);
+  
+    useEffect(() => {
+      if (!selectedChapter || !selectedChapter.quiz) {
+        setHomeView("topics");
+      }
+    }, [selectedChapter, setHomeView]);
+  
+    if (!selectedChapter || !selectedChapter.quiz) {
+      return null;
+    }
 
   const quiz = selectedChapter.quiz;
   const currentQuestion = quiz[currentQuestionIndex];

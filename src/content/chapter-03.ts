@@ -1,44 +1,373 @@
 export const chapter03 = {
-  "id": "chapter-3-colors-backgrounds",
-  "title_en": "Chapter 3: Colors & Backgrounds",
-  "title_hi": "अध्याय 3: रंग और पृष्ठभूमि",
-  "topics": [
+  id: "ch3",
+  title_en: "Chapter 3: CSS Colors & Backgrounds",
+  title_hi: "अध्याय 3: CSS रंग (Colors) और पृष्ठभूमि (Backgrounds)",
+  topics: [
     {
-      "id": "css-colors",
-      "title_en": "CSS Colors",
-      "title_hi": "CSS रंग",
-      "content_en": "Colors are fundamental to web design, and CSS provides several ways to define and apply them to various elements. Understanding these methods allows for precise control over your website's visual appearance.\n\n### Color Keywords\nCSS offers a list of predefined color names (keywords) that are easy to use and understand. These include common colors like `red`, `blue`, `green`, `black`, `white`, and many more specific names like `tomato`, `dodgerblue`, `mediumseagreen`.\n\n```css\np {\n  color: blue; /* Sets text color to blue */\n}\n\ndiv {\n  background-color: lightgray; /* Sets background color to light gray */\n}\n```\n\n### Hexadecimal Colors\nHexadecimal colors are specified using a `#` symbol followed by six hexadecimal digits (0-9, A-F). Each pair of digits represents the red, green, and blue components of the color, respectively. A shorter three-digit format (`#RGB`) can be used when each pair of digits is the same (e.g., `#FF00CC` can be `#F0C`).\n\n*   `#RRGGBB`: `RR` (red), `GG` (green), `BB` (blue)\n*   `#RGB`: Shorthand for `#RRGGBB` where `R`, `G`, `B` are repeated (e.g., `#F0C` is `#FF00CC`)\n\n```css\nh1 {\n  color: #FF0000; /* Pure red */\n}\n\nspan {\n  background-color: #336699; /* A shade of blue */\n}\n\n.short-hex {\n  color: #0F0; /* Equivalent to #00FF00 (pure green) */\n}\n```\n\n### RGB and RGBA Colors\nRGB (Red, Green, Blue) colors are defined using the `rgb()` function, which takes three integer values from 0 to 255, representing the intensity of red, green, and blue light. `rgba()` extends this by adding an alpha channel for opacity.\n\n*   `rgb(red, green, blue)`: `red`, `green`, `blue` values from 0 to 255.\n*   `rgba(red, green, blue, alpha)`: `alpha` value from 0.0 (fully transparent) to 1.0 (fully opaque).\n\n```css\n.box-rgb {\n  background-color: rgb(255, 99, 71); /* Tomato color */\n}\n\n.box-rgba {\n  background-color: rgba(0, 0, 255, 0.5); /* 50% opaque blue */\n}\n```\n\n### HSL and HSLA Colors\nHSL (Hue, Saturation, Lightness) colors are defined using the `hsl()` function. This model is often considered more intuitive for humans as it relates to how we perceive color.\n\n*   `hue`: A degree on the color wheel from 0 to 360 (0/360=red, 120=green, 240=blue).\n*   `saturation`: A percentage from 0% (grayscale) to 100% (full color).\n*   `lightness`: A percentage from 0% (black) to 100% (white).\n*   `hsla(hue, saturation, lightness, alpha)`: Adds an `alpha` channel for opacity.\n\n```css\n.box-hsl {\n  background-color: hsl(120, 100%, 50%); /* Pure green */\n}\n\n.box-hsla {\n  background-color: hsla(240, 100%, 50%, 0.7); /* 70% opaque blue */\n}\n```\n\n::tip\nWhen choosing a color format, consider your needs. Hexadecimal is concise for solid colors. RGB/RGBA is great for precise color mixing and transparency. HSL/HSLA is often preferred for creating color palettes and adjusting lightness/darkness or saturation easily.\n:::\n\n[[SANDBOX_0]]",
-      "content_hi": "वेब डिज़ाइन के लिए रंग मौलिक हैं, और CSS उन्हें विभिन्न elements पर परिभाषित और लागू करने के कई तरीके प्रदान करता है। इन तरीकों को समझने से आपकी वेबसाइट की दृश्य उपस्थिति पर सटीक नियंत्रण मिलता है।\n\n### Color Keywords\nCSS पूर्वनिर्धारित रंग नामों (keywords) की एक सूची प्रदान करता है जो उपयोग करने और समझने में आसान हैं। इनमें `red`, `blue`, `green`, `black`, `white` जैसे सामान्य रंग और `tomato`, `dodgerblue`, `mediumseagreen` जैसे कई विशिष्ट नाम शामिल हैं।\n\n```css\np {\n  color: blue; /* टेक्स्ट का रंग नीला सेट करता है */\n}\n\ndiv {\n  background-color: lightgray; /* बैकग्राउंड का रंग हल्का ग्रे सेट करता है */\n}\n```\n\n### Hexadecimal Colors\nHexadecimal colors को `#` प्रतीक के बाद छह हेक्साडेसिमल अंकों (0-9, A-F) का उपयोग करके निर्दिष्ट किया जाता है। अंकों का प्रत्येक जोड़ा क्रमशः रंग के लाल, हरे और नीले घटकों का प्रतिनिधित्व करता है। एक छोटा तीन-अंकीय प्रारूप (`#RGB`) का उपयोग तब किया जा सकता है जब अंकों का प्रत्येक जोड़ा समान हो (उदाहरण के लिए, `#FF00CC` को `#F0C` लिखा जा सकता है)।\n\n*   `#RRGGBB`: `RR` (लाल), `GG` (हरा), `BB` (नीला)\n*   `#RGB`: `#RRGGBB` के लिए शॉर्टहैंड जहाँ `R`, `G`, `B` दोहराए जाते हैं (उदाहरण के लिए, `#F0C` `#FF00CC` है)\n\n```css\nh1 {\n  color: #FF0000; /* शुद्ध लाल */\n}\n\nspan {\n  background-color: #336699; /* नीले रंग का एक शेड */\n}\n\n.short-hex {\n  color: #0F0; /* #00FF00 (शुद्ध हरा) के बराबर */\n}\n```\n\n### RGB और RGBA Colors\nRGB (Red, Green, Blue) colors को `rgb()` फ़ंक्शन का उपयोग करके परिभाषित किया जाता है, जो 0 से 255 तक के तीन पूर्णांक मान लेता है, जो लाल, हरे और नीले प्रकाश की तीव्रता का प्रतिनिधित्व करते हैं। `rgba()` इसमें अपारदर्शिता (opacity) के लिए एक अल्फा चैनल जोड़कर इसे विस्तारित करता है।\n\n*   `rgb(red, green, blue)`: `red`, `green`, `blue` मान 0 से 255 तक।\n*   `rgba(red, green, blue, alpha)`: `alpha` मान 0.0 (पूरी तरह से पारदर्शी) से 1.0 (पूरी तरह से अपारदर्शी) तक।\n\n```css\n.box-rgb {\n  background-color: rgb(255, 99, 71); /* टमाटर का रंग */\n}\n\n.box-rgba {\n  background-color: rgba(0, 0, 255, 0.5); /* 50% अपारदर्शी नीला */\n}\n```\n\n### HSL और HSLA Colors\nHSL (Hue, Saturation, Lightness) colors को `hsl()` फ़ंक्शन का उपयोग करके परिभाषित किया जाता है। इस मॉडल को अक्सर मनुष्यों के लिए अधिक सहज माना जाता है क्योंकि यह इस बात से संबंधित है कि हम रंग को कैसे समझते हैं।\n\n*   `hue`: कलर व्हील पर 0 से 360 तक की डिग्री (0/360=लाल, 120=हरा, 240=नीला)।\n*   `saturation`: 0% (ग्रेस्केल) से 100% (पूर्ण रंग) तक का प्रतिशत।\n*   `lightness`: 0% (काला) से 100% (सफेद) तक का प्रतिशत।\n*   `hsla(hue, saturation, lightness, alpha)`: अपारदर्शिता के लिए एक `alpha` चैनल जोड़ता है।\n\n```css\n.box-hsl {\n  background-color: hsl(120, 100%, 50%); /* शुद्ध हरा */\n}\n\n.box-hsla {\n  background-color: hsla(240, 100%, 50%, 0.7); /* 70% अपारदर्शी नीला */\n}\n```\n\n::tip\nरंग प्रारूप चुनते समय, अपनी आवश्यकताओं पर विचार करें। ठोस रंगों के लिए हेक्साडेसिमल संक्षिप्त है। RGB/RGBA सटीक रंग मिश्रण और पारदर्शिता के लिए बहुत अच्छा है। HSL/HSLA को अक्सर रंग पैलेट बनाने और आसानी से हल्कापन/गहरापन या संतृप्ति समायोजित करने के लिए पसंद किया जाता है।\n:::\n\n[[SANDBOX_0]]",
-      "sandboxes": [
+      id: "t3-1",
+      title_en: "CSS Color Formats (HEX, RGB, HSL & Transparency)",
+      title_hi: "CSS रंग प्रारूप (HEX, RGB, HSL और पारदर्शिता)",
+      content_en: `### Bringing Your Website to Life with Colors!
+
+Color is one of the most important elements of web design. In CSS, colors can be applied to text, backgrounds, borders, shadows, and much more. But how does the browser understand which exact shade of blue or red you want?
+
+CSS supports several ways to define colors:
+
+---
+
+### 1. Color Names (Keywords)
+CSS supports **140 standard color names** like \`red\`, \`blue\`, \`green\`, \`yellow\`, \`tomato\`, \`dodgerblue\`, and \`purple\`. While easy to use, they offer limited options for exact branding colors.
+
+### 2. HEX Codes (Hexadecimal)
+This is the most popular format used by designers. A HEX code starts with a hash (\`#\`) followed by 6 characters (0-9 and A-F) representing Red, Green, and Blue values.
+* **Syntax:** \`#RRGGBB\`
+* **Example:** \`#FF0000\` is pure Red, \`#000000\` is Black, and \`#FFFFFF\` is Pure White.
+
+### 3. RGB & RGBA (Red, Green, Blue, Alpha)
+An RGB color value represents the intensity of Red, Green, and Blue on a scale from **0 to 255**.
+* **Syntax:** \`rgb(red, green, blue)\` ➔ e.g., \`rgb(255, 99, 71)\`
+* **RGBA (Transparency):** The 'A' stands for **Alpha**, which controls transparency on a scale from \`0.0\` (completely transparent/invisible) to \`1.0\` (fully solid).
+* **Example:** \`rgba(0, 0, 255, 0.5)\` creates a 50% see-through blue!
+
+### 4. HSL & HSLA (Hue, Saturation, Lightness)
+HSL is intuitive because it works like a color wheel:
+* **Hue:** Degree on the color wheel from 0 to 360 (0 is Red, 120 is Green, 240 is Blue).
+* **Saturation:** Percentage of intensity (0% is a shade of gray, 100% is full color).
+* **Lightness:** Percentage of brightness (0% is black, 50% is normal, 100% is white).
+* **Example:** \`hsl(120, 100%, 50%)\`
+
+### 5. The \`currentcolor\` Keyword
+The \`currentcolor\` keyword acts like a dynamic variable. It automatically adopts whatever color is currently set on the element's text (\`color\` property).
+
+[[SANDBOX_0]]`,
+      content_hi: `### रंगों के साथ अपनी वेबसाइट में जान डालें!
+
+रंग (Color) वेब डिज़ाइन के सबसे महत्वपूर्ण तत्वों में से एक है। CSS में, रंगों का उपयोग टेक्स्ट, बैकग्राउंड, बॉर्डर, शैडो और बहुत कुछ डिज़ाइन करने के लिए किया जाता है। लेकिन ब्राउज़र यह कैसे समझता है कि आपको नीले या लाल रंग का कौन सा सटीक शेड चाहिए?
+
+CSS रंगों को परिभाषित करने के कई तरीके प्रदान करता है:
+
+---
+
+### 1. रंग के नाम (Color Names)
+CSS में **140 मानक रंगों के नाम** समर्थित हैं, जैसे \`red\`, \`blue\`, \`green\`, \`yellow\`, \`tomato\`, \`dodgerblue\`, और \`purple\`। ये उपयोग करने में आसान होते हैं, लेकिन सटीक ब्रांडिंग रंगों के लिए विकल्प सीमित होते हैं।
+
+### 2. हेक्स कोड (HEX Codes - Hexadecimal)
+यह डिज़ाइनरों द्वारा सबसे अधिक उपयोग किया जाने वाला प्रारूप है। HEX कोड की शुरुआत हैश (\`#\`) से होती है, जिसके बाद 6 अक्षर (0-9 और A-F) होते हैं जो Red, Green और Blue के मान को दर्शाते हैं।
+* **सिंटैक्स:** \`#RRGGBB\`
+* **उदाहरण:** \`#FF0000\` शुद्ध लाल है, \`#000000\` काला है, और \`#FFFFFF\` बिल्कुल सफेद है।
+
+### 3. RGB और RGBA
+RGB रंग का मान **0 से 255** के पैमाने पर Red, Green और Blue की तीव्रता को दर्शाता है।
+* **सिंटैक्स:** \`rgb(red, green, blue)\` ➔ उदाहरण के लिए, \`rgb(255, 99, 71)\`
+* **RGBA (पारदर्शिता / Transparency):** इसमें 'A' का मतलब **Alpha** होता है, जो पारदर्शिता को \`0.0\` (पूरी तरह से पारदर्शी/अदृश्य) से लेकर \`1.0\` (पूरी तरह से ठोस) के पैमाने पर नियंत्रित करता है।
+* **उदाहरण:** \`rgba(0, 0, 255, 0.5)\` 50% पारदर्शी नीला रंग बनाता है!
+
+### 4. HSL और HSLA (Hue, Saturation, Lightness)
+HSL बहुत आसान है क्योंकि यह एक कलर व्हील (रंग चक्र) की तरह काम करता है:
+* **Hue:** कलर व्हील पर 0 से 360 तक की डिग्री (0 लाल है, 120 हरा है, 240 नीला है)।
+* **Saturation:** रंग की गहराई का प्रतिशत (0% ग्रे का शेड है, 100% पूरा रंग है)।
+* **Lightness:** चमक का प्रतिशत (0% काला, 50% सामान्य, 100% सफेद)।
+* **उदाहरण:** \`hsl(120, 100%, 50%)\`
+
+### 5. \`currentcolor\` कीवर्ड
+\`currentcolor\` कीवर्ड एक डायनामिक वेरिएबल की तरह काम करता है। यह स्वतः ही उस रंग को अपना लेता है जो वर्तमान में उस एलिमेंट के टेक्स्ट (\`color\` प्रॉपर्टी) पर सेट होता है।
+
+[[SANDBOX_0]]`,
+      sandboxes: [
         {
-          "css": "body { font-family: sans-serif; display: flex; flex-direction: column; gap: 10px; padding: 20px; }\n.color-box { width: 150px; height: 50px; display: flex; align-items: center; justify-content: center; color: white; border-radius: 5px; font-weight: bold; }\n.keyword { background-color: dodgerblue; }\n.hex { background-color: #FF5733; }\n.rgb { background-color: rgb(60, 179, 113); }\n.rgba { background-color: rgba(147, 112, 219, 0.7); }\n.hsl { background-color: hsl(300, 70%, 60%); }\n.hsla { background-color: hsla(45, 100%, 50%, 0.8); color: black; }",
-          "html": "<div class=\"color-box keyword\">Dodgerblue (Keyword)</div>\n<div class=\"color-box hex\">#FF5733 (Hex)</div>\n<div class=\"color-box rgb\">rgb(60, 179, 113) (RGB)</div>\n<div class=\"color-box rgba\">rgba(147, 112, 219, 0.7) (RGBA)</div>\n<div class=\"color-box hsl\">hsl(300, 70%, 60%) (HSL)</div>\n<div class=\"color-box hsla\">hsla(45, 100%, 50%, 0.8) (HSLA)</div>"
+          html: `<h1>Color Formats Demo</h1>\n<p class="hex-box">HEX Color: #3498db</p>\n<p class="rgba-box">RGBA Transparent Green</p>\n<p class="hsl-box">HSL Vibrant Orange</p>\n<button class="dynamic-btn">CurrentColor Border</button>`,
+          css: `h1 {\n  color: tomato; /* Named color */\n}\n\n.hex-box {\n  background-color: #3498db; /* Blue in HEX */\n  color: white;\n  padding: 10px;\n}\n\n.rgba-box {\n  /* 40% transparent green background */\n  background-color: rgba(46, 204, 113, 0.4);\n  color: #2c3e50;\n  padding: 10px;\n  font-weight: bold;\n}\n\n.hsl-box {\n  background-color: hsl(30, 100%, 50%); /* Orange in HSL */\n  color: white;\n  padding: 10px;\n}\n\n.dynamic-btn {\n  color: #8e44ad; /* Purple text */\n  /* The border dynamically uses the purple text color! */\n  border: 3px solid currentcolor;\n  background: transparent;\n  padding: 8px 16px;\n  font-size: 16px;\n  margin-top: 5px;\n}`
         }
       ]
     },
     {
-      "id": "background",
-      "title_en": "Background",
-      "title_hi": "पृष्ठभूमि",
-      "content_en": "CSS background properties allow you to control the background of an element, including its color, image, how the image repeats, its position, and whether it scrolls with the content.\n\n### `background-color`\nThis property sets the solid color of an element's background. It accepts any valid CSS color value (keyword, hex, RGB, HSL, etc.).\n\n```css\ndiv {\n  background-color: #f0f0f0;\n}\n\nbody {\n  background-color: lightblue;\n}\n```\n\n### `background-image`\nThis property sets one or more background images for an element. The value is typically `url('path/to/image.jpg')`. You can specify multiple images separated by commas.\n\n```css\n.hero-section {\n  background-image: url('https://via.placeholder.com/800x400/FF0000/FFFFFF?text=Hero');\n}\n```\n\n### `background-repeat`\nControls how a background image repeats. Common values include:\n*   `repeat`: Repeats the image both horizontally and vertically (default).\n*   `repeat-x`: Repeats the image horizontally only.\n*   `repeat-y`: Repeats the image vertically only.\n*   `no-repeat`: Displays the image only once.\n\n```css\n.pattern-bg {\n  background-image: url('https://via.placeholder.com/50/0000FF/FFFFFF?text=P');\n  background-repeat: repeat;\n}\n\n.single-logo {\n  background-image: url('https://via.placeholder.com/100/00FF00/FFFFFF?text=Logo');\n  background-repeat: no-repeat;\n}\n```\n\n### `background-position`\nSets the initial position of each background image. You can use keywords (e.g., `top`, `center`, `bottom`, `left`, `right`), percentages, or length units (e.g., `px`, `em`).\n\n```css\n.centered-bg {\n  background-image: url('https://via.placeholder.com/150/FFFF00/000000?text=Center');\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n\n.top-right-bg {\n  background-image: url('https://via.placeholder.com/100/FF00FF/FFFFFF?text=TR');\n  background-repeat: no-repeat;\n  background-position: top right;\n}\n```\n\n### `background-attachment`\nDetermines whether a background image scrolls with the rest of the page or is fixed in place.\n*   `scroll`: The background image scrolls with the element's content (default).\n*   `fixed`: The background image is fixed relative to the viewport, even if the element's content scrolls.\n*   `local`: The background image scrolls with the element's contents.\n\n```css\n.fixed-parallax {\n  background-image: url('https://via.placeholder.com/1200x600/87CEEB/FFFFFF?text=Fixed+Background');\n  background-attachment: fixed;\n  background-size: cover;\n}\n```\n\n### `background` Shorthand Property\nThe `background` shorthand property allows you to set all background properties in a single declaration. The order of values is generally:\n\n`background: [background-color] [background-image] [background-repeat] [background-attachment] [background-position];`\n\nNot all values are required, and you can omit any that you don't want to set.\n\n```css\n.shorthand-example {\n  background: lightcoral url('https://via.placeholder.com/50/000000/FFFFFF?text=S') no-repeat center fixed;\n}\n```\n\n::note\nWhen using the `background` shorthand, any individual background properties set previously will be overridden. It's a powerful way to define backgrounds concisely, but be mindful of its cascading effect.\n:::\n\n[[SANDBOX_0]]",
-      "content_hi": "CSS background properties आपको एक element की पृष्ठभूमि को नियंत्रित करने की अनुमति देते हैं, जिसमें उसका रंग, छवि, छवि कैसे दोहराई जाती है, उसकी स्थिति और क्या वह content के साथ स्क्रॉल करती है, शामिल है।\n\n### `background-color`\nयह property एक element की पृष्ठभूमि का ठोस रंग सेट करती है। यह कोई भी वैध CSS color value (keyword, hex, RGB, HSL, आदि) स्वीकार करती है।\n\n```css\ndiv {\n  background-color: #f0f0f0;\n}\n\nbody {\n  background-color: lightblue;\n}\n```\n\n### `background-image`\nयह property एक element के लिए एक या अधिक background images सेट करती है। मान आमतौर पर `url('path/to/image.jpg')` होता है। आप अल्पविराम से अलग करके कई images निर्दिष्ट कर सकते हैं।\n\n```css\n.hero-section {\n  background-image: url('https://via.placeholder.com/800x400/FF0000/FFFFFF?text=Hero');\n}\n```\n\n### `background-repeat`\nनियंत्रित करता है कि एक background image कैसे दोहराई जाती है। सामान्य मानों में शामिल हैं:\n*   `repeat`: छवि को क्षैतिज और लंबवत दोनों तरह से दोहराता है (डिफ़ॉल्ट)।\n*   `repeat-x`: छवि को केवल क्षैतिज रूप से दोहराता है।\n*   `repeat-y`: छवि को केवल लंबवत रूप से दोहराता है।\n*   `no-repeat`: छवि को केवल एक बार प्रदर्शित करता है।\n\n```css\n.pattern-bg {\n  background-image: url('https://via.placeholder.com/50/0000FF/FFFFFF?text=P');\n  background-repeat: repeat;\n}\n\n.single-logo {\n  background-image: url('https://via.placeholder.com/100/00FF00/FFFFFF?text=Logo');\n  background-repeat: no-repeat;\n}\n```\n\n### `background-position`\nप्रत्येक background image की प्रारंभिक स्थिति सेट करता है। आप keywords (जैसे, `top`, `center`, `bottom`, `left`, `right`), प्रतिशत, या लंबाई इकाइयों (जैसे, `px`, `em`) का उपयोग कर सकते हैं।\n\n```css\n.centered-bg {\n  background-image: url('https://via.placeholder.com/150/FFFF00/000000?text=Center');\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n\n.top-right-bg {\n  background-image: url('https://via.placeholder.com/100/FF00FF/FFFFFF?text=TR');\n  background-repeat: no-repeat;\n  background-position: top right;\n}\n```\n\n### `background-attachment`\nनिर्धारित करता है कि एक background image पृष्ठ के बाकी हिस्सों के साथ स्क्रॉल करती है या अपनी जगह पर स्थिर रहती है।\n*   `scroll`: background image element के content के साथ स्क्रॉल करती है (डिफ़ॉल्ट)।\n*   `fixed`: background image viewport के सापेक्ष स्थिर रहती है, भले ही element का content स्क्रॉल करे।\n*   `local`: background image element के content के साथ स्क्रॉल करती है।\n\n```css\n.fixed-parallax {\n  background-image: url('https://via.placeholder.com/1200x600/87CEEB/FFFFFF?text=Fixed+Background');\n  background-attachment: fixed;\n  background-size: cover;\n}\n```\n\n### `background` Shorthand Property\n`background` shorthand property आपको एक ही घोषणा में सभी background properties सेट करने की अनुमति देती है। मानों का क्रम आम तौर पर इस प्रकार होता है:\n\n`background: [background-color] [background-image] [background-repeat] [background-attachment] [background-position];`\n\nसभी मान आवश्यक नहीं हैं, और आप किसी भी मान को छोड़ सकते हैं जिसे आप सेट नहीं करना चाहते हैं।\n\n```css\n.shorthand-example {\n  background: lightcoral url('https://via.placeholder.com/50/000000/FFFFFF?text=S') no-repeat center fixed;\n}\n```\n\n::note\n`background` shorthand का उपयोग करते समय, पहले से सेट की गई कोई भी व्यक्तिगत background properties ओवरराइड हो जाएंगी। यह backgrounds को संक्षिप्त रूप से परिभाषित करने का एक शक्तिशाली तरीका है, लेकिन इसके कैस्केडिंग प्रभाव के प्रति सचेत रहें।\n:::\n\n[[SANDBOX_0]]",
-      "sandboxes": [
+      id: "t3-2",
+      title_en: "Background Colors & Background Images",
+      title_hi: "पृष्ठभूमि रंग (Background Colors) और छवियाँ (Images)",
+      content_en: `### Styling Element Backgrounds
+
+In CSS, the background of an element is the total area underneath its content, padding, and borders. You can fill this area with a solid color, a beautiful photograph, or even layer multiple graphics together!
+
+---
+
+### 1. \`background-color\`
+This property sets a solid background color for an element using any of the formats we learned (HEX, RGB, HSL, or color names).
+
+\`\`\`css
+body {
+  background-color: #f4f7f6;
+}
+\`\`\`
+
+---
+
+### 2. \`background-image\`
+To place an image inside an element's background, we use the \`background-image\` property combined with the \`url('...')\` function.
+
+#### Syntax:
+\`\`\`css
+div {
+  background-image: url("https://example.com/image.jpg");
+}
+\`\`\`
+
+#### What happens by default?
+When you add a background image:
+1. By default, the browser will **repeat (tile)** the image both horizontally and vertically until it fills the entire element.
+2. If the image is larger than the element, only the top-left corner of the image will be visible.
+3. **Layering Rule:** If you set both a \`background-color\` and a \`background-image\`, the image always sits **on top** of the color. The color will only be visible if the image fails to load or has transparent areas!
+
+[[SANDBOX_0]]
+
+:::tip
+**Accessibility Tip:** Always specify a fallback \`background-color\` when using a background image. If the user's internet is slow and the image fails to load, your text will still remain readable against the fallback color!
+:::`,
+      content_hi: `### बैकग्राउंड (पृष्ठभूमि) को स्टाइल करना
+
+CSS में, किसी एलिमेंट का बैकग्राउंड उसके कंटेंट, पैडिंग और बॉर्डर के नीचे का पूरा क्षेत्र होता है। आप इस क्षेत्र को किसी ठोस रंग, एक खूबसूरत तस्वीर, या यहाँ तक कि कई ग्राफिक्स को एक साथ जोड़कर भर सकते हैं!
+
+---
+
+### 1. \`background-color\`
+यह प्रॉपर्टी हमने सीखे गए किसी भी कलर फॉर्मेट (HEX, RGB, HSL, या रंग के नाम) का उपयोग करके एलिमेंट के लिए एक ठोस बैकग्राउंड रंग सेट करती है।
+
+\`\`\`css
+body {
+  background-color: #f4f7f6;
+}
+\`\`\`
+
+---
+
+### 2. \`background-image\`
+किसी एलिमेंट के बैकग्राउंड में इमेज (तस्वीर) लगाने के लिए, हम \`background-image\` प्रॉपर्टी के साथ \`url('...')\` फ़ंक्शन का उपयोग करते हैं।
+
+#### सिंटैक्स (Syntax):
+\`\`\`css
+div {
+  background-image: url("https://example.com/image.jpg");
+}
+\`\`\`
+
+#### डिफ़ॉल्ट रूप से क्या होता है?
+जब आप कोई बैकग्राउंड इमेज लगाते हैं:
+1. डिफ़ॉल्ट रूप से, ब्राउज़र इमेज को क्षैतिज और लंबवत (horizontally and vertically) दोनों दिशाओं में तब तक **दोहराता (repeat करता)** है जब तक कि वह पूरे एलिमेंट को भर न दे।
+2. यदि इमेज एलिमेंट से बड़ी है, तो केवल उसका ऊपरी-बायाँ हिस्सा ही दिखाई देगा।
+3. **लेयरिंग का नियम:** यदि आप \`background-color\` और \`background-image\` दोनों सेट करते हैं, तो इमेज हमेशा रंग के **ऊपर** रहती है। रंग केवल तभी दिखाई देगा जब इमेज लोड होने में विफल हो जाए या इमेज में पारदर्शी हिस्से हों!
+
+[[SANDBOX_0]]
+
+:::tip
+**एक्सेसिबिलिटी टिप:** बैकग्राउंड इमेज का उपयोग करते समय हमेशा एक फॉलबैक (वैकल्पिक) \`background-color\` सेट करें। यदि उपयोगकर्ता का इंटरनेट धीमा है और इमेज लोड नहीं होती है, तब भी उस बैकग्राउंड रंग पर आपका टेक्स्ट आसानी से पढ़ा जा सकेगा!
+:::`,
+      sandboxes: [
         {
-          "css": "body { font-family: sans-serif; margin: 0; padding: 0; }\n.box { width: 100%; height: 200px; margin-bottom: 20px; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2em; text-shadow: 1px 1px 2px black; }\n.box-color { background-color: #e0f7fa; color: #333; text-shadow: none; }\n.box-image-repeat { background-image: url('https://via.placeholder.com/50/FFD700/000000?text=P'); background-repeat: repeat; }\n.box-image-no-repeat { background-image: url('https://via.placeholder.com/100/FF6347/FFFFFF?text=Logo'); background-repeat: no-repeat; background-position: center; }\n.box-image-position { background-image: url('https://via.placeholder.com/100/8A2BE2/FFFFFF?text=Pos'); background-repeat: no-repeat; background-position: 90% 20%; }\n.box-attachment-scroll { background-image: url('https://via.placeholder.com/1200x600/ADD8E6/FFFFFF?text=Scroll'); background-repeat: no-repeat; background-size: cover; background-attachment: scroll; height: 300px; overflow: auto; }\n.box-attachment-fixed { background-image: url('https://via.placeholder.com/1200x600/90EE90/FFFFFF?text=Fixed'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; height: 300px; }\n.box-shorthand { background: linear-gradient(to right, #ff7e5f, #feb47b) url('https://via.placeholder.com/30/FFFFFF/000000?text=S') no-repeat 10px center; color: #333; text-shadow: none; }\n.content-scroll { height: 150px; overflow-y: scroll; padding: 10px; background-color: rgba(255,255,255,0.8); color: black; border-radius: 5px; margin: 20px; }\n",
-          "html": "<div class=\"box box-color\">Background Color</div>\n<div class=\"box box-image-repeat\">Background Image (Repeat)</div>\n<div class=\"box box-image-no-repeat\">Background Image (No Repeat, Center)</div>\n<div class=\"box box-image-position\">Background Image (Custom Position)</div>\n<div class=\"box box-attachment-scroll\">Background Attachment (Scroll)\n  <div class=\"content-scroll\">\n    <p>Scroll down to see the background image scroll with this content.</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n  </div>\n</div>\n<div class=\"box box-attachment-fixed\">Background Attachment (Fixed)</div>\n<div class=\"box box-shorthand\">Background Shorthand</div>"
+          html: `<div class="color-box">\n  <h2>Solid Color Background</h2>\n</div>\n\n<div class="image-box">\n  <h2>Background Image (Tiled by Default)</h2>\n</div>`,
+          css: `.color-box {\n  background-color: #2c3e50;\n  color: white;\n  padding: 20px;\n  margin-bottom: 15px;\n  border-radius: 8px;\n}\n\n.image-box {\n  /* Setting a fallback color AND an image URL */\n  background-color: #34495e;\n  background-image: url("https://ik.imagekit.io/Sankit/background.png");\n  color: #ffffff;\n  padding: 40px 20px;\n  border-radius: 8px;\n  text-shadow: 1px 1px 3px black;\n}`
         }
       ]
     },
     {
-      "id": "background-image",
-      "title_en": "Background Image",
-      "title_hi": "पृष्ठभूमि छवि",
-      "content_en": "Background images are a powerful way to add visual appeal and branding to your web pages. CSS provides extensive control over how these images are displayed.\n\n### Setting a Background Image\nTo set a background image, use the `background-image` property with the `url()` function, pointing to the image file. Ensure the path is correct, whether it's relative or absolute.\n\n```css\nbody {\n  background-image: url('/images/background-pattern.png'); /* Relative path */\n}\n\n.header {\n  background-image: url('https://example.com/assets/header-bg.jpg'); /* Absolute URL */\n}\n```\n\n### `background-repeat` Revisited\nAs discussed, `background-repeat` controls image tiling. For background images, `no-repeat` is very common when you want a single image, like a logo or a hero image.\n\n```css\n.logo-container {\n  background-image: url('https://via.placeholder.com/100/0000FF/FFFFFF?text=Logo');\n  background-repeat: no-repeat;\n  background-position: center;\n}\n```\n\n### `background-size`\nThis property specifies the size of the background image. It's crucial for making images fit well within their containers.\n\n*   `auto`: The background image's original size (default).\n*   `cover`: Scales the image to cover the entire container, potentially cropping parts of the image if its aspect ratio doesn't match the container's.\n*   `contain`: Scales the image to fit entirely within the container, maintaining its aspect ratio. This might leave empty space (letterboxing).\n*   `length` (e.g., `200px 100px`): Sets explicit width and height.\n*   `percentage` (e.g., `50% 100%`): Sets width and height relative to the element's size.\n\n```css\n.full-width-bg {\n  background-image: url('https://via.placeholder.com/1200x600/FF5733/FFFFFF?text=Cover');\n  background-size: cover;\n  background-position: center;\n}\n\n.contained-icon {\n  background-image: url('https://via.placeholder.com/100/33FF57/FFFFFF?text=Icon');\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n```\n\n### `background-position` Revisited\nBeyond simple keywords, `background-position` can take two values (horizontal and vertical) or even three/four values for more complex positioning relative to corners.\n\n*   `background-position: 20px 30px;` (20px from left, 30px from top)\n*   `background-position: right 10px bottom 20px;` (10px from right, 20px from bottom)\n\n```css\n.custom-pos-bg {\n  background-image: url('https://via.placeholder.com/80/FFC300/000000?text=Dot');\n  background-repeat: no-repeat;\n  background-position: 10% 80%;\n}\n```\n\n### `background-attachment` Revisited\n`fixed` attachment is often used to create parallax scrolling effects, where the background image appears to move slower than the foreground content.\n\n```css\n.parallax-section {\n  background-image: url('https://via.placeholder.com/1600x900/4CAF50/FFFFFF?text=Parallax');\n  background-attachment: fixed;\n  background-size: cover;\n  background-position: center;\n  height: 400px; /* Needs height to show effect */\n}\n```\n\n### Multiple Background Images\nYou can layer multiple background images on a single element by separating their `url()` values with commas. The first image listed will be on top, and subsequent images will be layered underneath.\n\n```css\n.layered-bg {\n  background-image: url('https://via.placeholder.com/100/FF0000/FFFFFF?text=Top'),\n                    url('https://via.placeholder.com/200/00FF00/FFFFFF?text=Mid'),\n                    url('https://via.placeholder.com/300/0000FF/FFFFFF?text=Bot');\n  background-repeat: no-repeat, no-repeat, no-repeat;\n  background-position: top left, center, bottom right;\n  background-size: 50px, 100px, 150px;\n}\n```\n\n::warning\nUsing very large or unoptimized background images can significantly impact page load times and performance. Always optimize your images for the web (compress, use appropriate formats like WebP) to ensure a smooth user experience.\n:::\n\n[[SANDBOX_0]]",
-      "content_hi": "Background images आपकी वेब पेजों में दृश्य अपील और ब्रांडिंग जोड़ने का एक शक्तिशाली तरीका हैं। CSS इन images को कैसे प्रदर्शित किया जाता है, इस पर व्यापक नियंत्रण प्रदान करता है।\n\n### Setting a Background Image\nएक background image सेट करने के लिए, `url()` फ़ंक्शन के साथ `background-image` property का उपयोग करें, जो image फ़ाइल को इंगित करता है। सुनिश्चित करें कि पथ सही है, चाहे वह relative हो या absolute।\n\n```css\nbody {\n  background-image: url('/images/background-pattern.png'); /* Relative path */\n}\n\n.header {\n  background-image: url('https://example.com/assets/header-bg.jpg'); /* Absolute URL */\n}\n```\n\n### `background-repeat` Revisited\nजैसा कि चर्चा की गई है, `background-repeat` image tiling को नियंत्रित करता है। background images के लिए, `no-repeat` बहुत आम है जब आप एक ही image चाहते हैं, जैसे कि एक logo या एक hero image।\n\n```css\n.logo-container {\n  background-image: url('https://via.placeholder.com/100/0000FF/FFFFFF?text=Logo');\n  background-repeat: no-repeat;\n  background-position: center;\n}\n```\n\n### `background-size`\nयह property background image का आकार निर्दिष्ट करती है। images को उनके containers में अच्छी तरह से फिट करने के लिए यह महत्वपूर्ण है।\n\n*   `auto`: background image का मूल आकार (डिफ़ॉल्ट)।\n*   `cover`: image को पूरे container को कवर करने के लिए स्केल करता है, यदि उसका aspect ratio container के aspect ratio से मेल नहीं खाता है तो image के कुछ हिस्सों को क्रॉप कर सकता है।\n*   `contain`: image को उसके aspect ratio को बनाए रखते हुए, container के भीतर पूरी तरह से फिट होने के लिए स्केल करता है। इससे खाली जगह (letterboxing) रह सकती है।\n*   `length` (जैसे, `200px 100px`): स्पष्ट चौड़ाई और ऊंचाई सेट करता है।\n*   `percentage` (जैसे, `50% 100%`): element के आकार के सापेक्ष चौड़ाई और ऊंचाई सेट करता है।\n\n```css\n.full-width-bg {\n  background-image: url('https://via.placeholder.com/1200x600/FF5733/FFFFFF?text=Cover');\n  background-size: cover;\n  background-position: center;\n}\n\n.contained-icon {\n  background-image: url('https://via.placeholder.com/100/33FF57/FFFFFF?text=Icon');\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n```\n\n### `background-position` Revisited\nसरल keywords से परे, `background-position` दो मान (क्षैतिज और लंबवत) या कोनों के सापेक्ष अधिक जटिल स्थिति के लिए तीन/चार मान भी ले सकता है।\n\n*   `background-position: 20px 30px;` (बाएं से 20px, ऊपर से 30px)\n*   `background-position: right 10px bottom 20px;` (दाएं से 10px, नीचे से 20px)\n\n```css\n.custom-pos-bg {\n  background-image: url('https://via.placeholder.com/80/FFC300/000000?text=Dot');\n  background-repeat: no-repeat;\n  background-position: 10% 80%;\n}\n```\n\n### `background-attachment` Revisited\n`fixed` attachment का उपयोग अक्सर parallax scrolling effects बनाने के लिए किया जाता है, जहाँ background image foreground content की तुलना में धीमी गति से चलती हुई प्रतीत होती है।\n\n```css\n.parallax-section {\n  background-image: url('https://via.placeholder.com/1600x900/4CAF50/FFFFFF?text=Parallax');\n  background-attachment: fixed;\n  background-size: cover;\n  background-position: center;\n  height: 400px; /* प्रभाव दिखाने के लिए ऊंचाई की आवश्यकता है */\n}\n```\n\n### Multiple Background Images\nआप एक ही element पर कई background images को उनके `url()` मानों को अल्पविराम से अलग करके परत कर सकते हैं। सूचीबद्ध पहली image शीर्ष पर होगी, और बाद की images उसके नीचे परत की जाएंगी।\n\n```css\n.layered-bg {\n  background-image: url('https://via.placeholder.com/100/FF0000/FFFFFF?text=Top'),\n                    url('https://via.placeholder.com/200/00FF00/FFFFFF?text=Mid'),\n                    url('https://via.placeholder.com/300/0000FF/FFFFFF?text=Bot');\n  background-repeat: no-repeat, no-repeat, no-repeat;\n  background-position: top left, center, bottom right;\n  background-size: 50px, 100px, 150px;\n}\n```\n\n::warning\nबहुत बड़ी या unoptimized background images का उपयोग करने से पेज लोड समय और प्रदर्शन पर महत्वपूर्ण प्रभाव पड़ सकता है। एक सहज उपयोगकर्ता अनुभव सुनिश्चित करने के लिए हमेशा अपनी images को वेब के लिए optimize करें (compress करें, WebP जैसे उपयुक्त प्रारूपों का उपयोग करें)।\n:::\n\n[[SANDBOX_0]]",
-      "sandboxes": [
+      id: "t3-3",
+      title_en: "CSS Gradients (Linear, Radial & Conic)",
+      title_hi: "CSS ग्रेडिएंट्स (Linear, Radial और Conic)",
+      content_en: `### Why use Gradients?
+In the early days of web development, if designers wanted a smooth color transition (like a button fading from blue to purple), they had to create an image in Photoshop and load it via HTTP. Today, CSS can generate stunning **Gradients** natively using math!
+
+:::note ⚠️ Important Distinction
+Even though gradients look like colors, web browsers treat CSS gradients as **Images**. Therefore, you must use the \`background-image\` (or shorthand \`background\`) property to apply them, **NOT** \`background-color\`!
+:::
+
+---
+
+### 1. Linear Gradient (\`linear-gradient\`)
+Transitions colors in a straight line (up, down, left, right, or diagonally).
+
+#### Syntax:
+\`\`\`css
+background-image: linear-gradient(direction, color1, color2, ...);
+\`\`\`
+* **Direction Examples:** \`to right\`, \`to bottom left\`, \`45deg\`, \`-135deg\`.
+
+### 2. Radial Gradient (\`radial-gradient\`)
+Transitions colors outward from a central point, creating a circular or elliptical shape.
+
+#### Syntax:
+\`\`\`css
+background-image: radial-gradient(shape size at position, color1, color2, ...);
+\`\`\`
+* **Shape:** \`circle\` or \`ellipse\` (default).
+
+### 3. Conic Gradient (\`conic-gradient\`)
+Transitions colors rotated around a center point (like a color pie chart or clock face). This is a modern CSS feature!
+
+#### Syntax:
+\`\`\`css
+background-image: conic-gradient(from angle, color1, color2, ...);
+\`\`\`
+
+[[SANDBOX_0]]`,
+      content_hi: `### ग्रेडिएंट्स (Gradients) का उपयोग क्यों करें?
+वेब डेवलपमेंट के शुरुआती दिनों में, यदि डिज़ाइनरों को रंगों का एक सुगम बदलाव चाहिए होता था (जैसे एक बटन जो नीले से बैंगनी रंग में बदल रहा हो), तो उन्हें फोटोशॉप में एक इमेज बनानी पड़ती थी। आज, CSS सीधे गणित का उपयोग करके शानदार **Gradients** बना सकता है!
+
+:::note ⚠️ महत्वपूर्ण अंतर
+भले ही ग्रेडिएंट्स रंगों की तरह दिखते हैं, लेकिन वेब ब्राउज़र CSS ग्रेडिएंट्स को **इमेज (Image)** के रूप में मानता है। इसलिए, इन्हें लगाने के लिए आपको \`background-image\` (या शार्टहैंड \`background\`) प्रॉपर्टी का उपयोग करना होगा, **\`background-color\` का नहीं!**
+:::
+
+---
+
+### 1. लीनियर ग्रेडिएंट (\`linear-gradient\`)
+यह रंगों को एक सीधी रेखा में (ऊपर, नीचे, बाएँ, दाएँ, या तिरछे) बदलता है।
+
+#### सिंटैक्स (Syntax):
+\`\`\`css
+background-image: linear-gradient(direction, color1, color2, ...);
+\`\`\`
+* **दिशा के उदाहरण:** \`to right\`, \`to bottom left\`, \`45deg\`, \`-135deg\`.
+
+### 2. रेडियल ग्रेडिएंट (\`radial-gradient\`)
+यह रंगों को केंद्र बिंदु से बाहर की ओर फैलाता है, जिससे एक गोलाकार या अंडाकार आकृति बनती है।
+
+#### सिंटैक्स (Syntax):
+\`\`\`css
+background-image: radial-gradient(shape size at position, color1, color2, ...);
+\`\`\`
+* **आकार (Shape):** \`circle\` (वृत्त) या \`ellipse\` (अंडाकार - डिफ़ॉल्ट)।
+
+### 3. कॉनिक ग्रेडिएंट (\`conic-gradient\`)
+यह रंगों को एक केंद्र बिंदु के चारों ओर घुमाता है (जैसे पाई चार्ट या घड़ी की सुइयाँ)। यह एक आधुनिक CSS फीचर!
+
+#### सिंटैक्स (Syntax):
+\`\`\`css
+background-image: conic-gradient(from angle, color1, color2, ...);
+\`\`\`
+
+[[SANDBOX_0]]`,
+      sandboxes: [
         {
-          "css": "body { font-family: sans-serif; margin: 0; padding: 0; }\n.container { width: 100%; height: 250px; margin-bottom: 20px; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2em; text-shadow: 1px 1px 2px black; background-color: #f0f0f0; }\n.bg-image-no-repeat { background-image: url('https://via.placeholder.com/150/FFD700/000000?text=Logo'); background-repeat: no-repeat; background-position: center; }\n.bg-size-cover { background-image: url('https://via.placeholder.com/800x400/FF5733/FFFFFF?text=Cover'); background-size: cover; background-position: center; }\n.bg-size-contain { background-image: url('https://via.placeholder.com/200/33FF57/FFFFFF?text=Contain'); background-size: contain; background-repeat: no-repeat; background-position: center; }\n.bg-size-custom { background-image: url('https://via.placeholder.com/100/8A2BE2/FFFFFF?text=Custom'); background-size: 100px 150px; background-repeat: no-repeat; background-position: top left; }\n.bg-multiple { \n  background-image: url('https://via.placeholder.com/50/FF0000/FFFFFF?text=1'), url('https://via.placeholder.com/70/00FF00/FFFFFF?text=2'), url('https://via.placeholder.com/90/0000FF/FFFFFF?text=3');\n  background-repeat: no-repeat, no-repeat, no-repeat;\n  background-position: 10px 10px, center, bottom right;\n  background-size: 40px, 60px, 80px;\n  background-color: #e0f7fa;\n  color: #333; text-shadow: none;\n}\n.parallax-effect { \n  background-image: url('https://via.placeholder.com/1600x900/4CAF50/FFFFFF?text=Parallax');\n  background-attachment: fixed;\n  background-size: cover;\n  background-position: center;\n  height: 400px; \n  margin-top: 20px;\n  color: white; text-shadow: 1px 1px 2px black;\n  display: flex; align-items: center; justify-content: center;\n}\n.scroll-content { height: 1000px; background-color: #f8f8f8; padding: 20px; }\n",
-          "html": "<div class=\"container bg-image-no-repeat\">No Repeat, Centered</div>\n<div class=\"container bg-size-cover\">Background Size: Cover</div>\n<div class=\"container bg-size-contain\">Background Size: Contain</div>\n<div class=\"container bg-size-custom\">Background Size: Custom (100px 150px)</div>\n<div class=\"container bg-multiple\">Multiple Background Images</div>\n<div class=\"scroll-content\">Scroll down to see the fixed background effect below.\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n</div>\n<div class=\"parallax-effect\">Parallax Effect (Fixed Background)</div>\n<div class=\"scroll-content\">More content to enable scrolling.\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n</div>"
+          html: `<div class="box linear">Linear Gradient (45deg)</div>\n<div class="box radial">Radial Gradient (Circle)</div>\n<div class="box conic">Conic Gradient (Pie Chart Effect)</div>`,
+          css: `.box {\n  height: 80px;\n  color: white;\n  font-weight: bold;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 12px;\n  border-radius: 8px;\n  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);\n}\n\n/* 1. Linear: Fading diagonally at 45 degrees */\n.linear {\n  background-image: linear-gradient(45deg, #ff416c, #ff4b2b);\n}\n\n/* 2. Radial: Circle expanding outward */\n.radial {\n  background-image: radial-gradient(circle, #8e44ad, #2c3e50);\n}\n\n/* 3. Conic: Rotating around center */\n.conic {\n  background-image: conic-gradient(from 0deg, #f39c12, #e74c3c, #3498db, #2ecc71, #f39c12);\n}`
+        }
+      ]
+    },
+    {
+      id: "t3-4",
+      title_en: "Background Control Properties & The Shorthand",
+      title_hi: "बैकग्राउंड नियंत्रण प्रॉपर्टीज और शार्टहैंड (Shorthand)",
+      content_en: `When you insert a background image, you usually don't want it tiling endlessly like a cheap 90s website! CSS gives you granular properties to control exactly how background graphics behave.
+
+---
+
+### 1. \`background-repeat\`
+Controls if and how the image tiles.
+* \`repeat\`: (Default) Tiles horizontally and vertically.
+* \`no-repeat\`: Shows the image only once.
+* \`repeat-x\` / \`repeat-y\`: Tiles strictly horizontally or vertically.
+
+### 2. \`background-size\`
+Controls the dimensions of the background graphic.
+* \`cover\`: **Most Popular!** Scales the image to completely cover the container without stretching it. (Some parts of the image may be clipped if aspect ratios differ).
+* \`contain\`: Scales the image to be as large as possible without clipping or overflowing.
+* \`100% 100%\`: Forces the image to stretch to exact container dimensions (can distort image quality!).
+
+### 3. \`background-position\`
+Sets the starting position of the background image.
+* **Keywords:** \`center\`, \`top left\`, \`bottom right\`.
+* **Coordinates:** \`50% 50%\` or \`20px 40px\`.
+
+### 4. \`background-attachment\`
+Determines whether the background image scrolls with the page or stays fixed in place.
+* \`scroll\`: (Default) Moves with the document.
+* \`fixed\`: The image stays locked to the viewport, creating a stunning **Parallax scrolling effect**!
+
+---
+
+### The All-in-One \`background\` Shorthand
+Writing 6 different background lines for a single banner is tedious. You can combine them into one clean line using the \`background\` shorthand!
+
+#### Shorthand Syntax Order:
+\`\`\`css
+background: color image repeat attachment position / size;
+\`\`\`
+
+#### Example of Shorthand in Action:
+\`\`\`css
+/* Long way: */
+div {
+  background-color: #000;
+  background-image: url('banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Shorthand Way (Exactly identical!): */
+div {
+  background: #000 url('banner.jpg') no-repeat center / cover;
+}
+\`\`\`
+*(Note: Notice the forward slash \`/\` separating position and size!)*
+
+[[SANDBOX_0]]`,
+      content_hi: `जब आप कोई बैकग्राउंड इमेज लगाते हैं, तो आप यह बिल्कुल नहीं चाहते कि वह 90 के दशक की किसी पुरानी वेबसाइट की तरह बार-बार रिपीट हो! CSS आपको बैकग्राउंड ग्राफिक्स के व्यवहार को पूरी तरह नियंत्रित करने के लिए विशेष प्रॉपर्टीज देता है।
+
+---
+
+### 1. \`background-repeat\`
+यह नियंत्रित करता है कि इमेज दोहराई जाएगी या नहीं।
+* \`repeat\`: (डिफ़ॉल्ट) क्षैतिज और लंबवत दोनों तरफ दोहराता है।
+* \`no-repeat\`: इमेज को केवल एक बार दिखाता है।
+* \`repeat-x\` / \`repeat-y\`: केवल क्षैतिज या केवल लंबवत दिशा में दोहराता है।
+
+### 2. \`background-size\`
+यह बैकग्राउंड ग्राफिक के आकार को नियंत्रित करता है।
+* \`cover\`: **सबसे लोकप्रिय!** इमेज को बिना खींचे (without stretching) इस तरह बड़ा करता है कि वह पूरे कंटेनर को पूरी तरह ढक ले। (यदि कंटेनर का अनुपात अलग है तो इमेज का कुछ हिस्सा कट सकता है)।
+* \`contain\`: इमेज को बिना काटे जितना संभव हो उतना बड़ा दिखाता है।
+* \`100% 100%\`: इमेज को ज़बरदस्ती खींचकर कंटेनर के आकार का बना देता है (इससे फोटो खराब दिख सकती है!)।
+
+### 3. \`background-position\`
+यह बैकग्राउंड इमेज की शुरुआती स्थिति (position) तय करता है।
+* **कीवर्ड्स:** \`center\`, \`top left\`, \`bottom right\`.
+* **निर्देशांक (Coordinates):** \`50% 50%\` या \`20px 40px\`.
+
+### 4. \`background-attachment\`
+यह तय करता है कि पेज स्क्रॉल करने पर बैकग्राउंड इमेज साथ में स्क्रॉल होगी या अपनी जगह स्थिर रहेगी।
+* \`scroll\`: (डिफ़ॉल्ट) पेज के साथ स्क्रॉल होती है।
+* \`fixed\`: इमेज स्क्रीन पर लॉक हो जाती है, जिससे एक शानदार **Parallax स्क्रॉलिंग इफ़ेक्ट** बनता है!
+
+---
+
+### ऑल-इन-वन \`background\` शार्टहैंड
+एक ही बैनर के लिए 6 अलग-अलग बैकग्राउंड लाइनें लिखना उबाऊ है। आप उन्हें \`background\` शार्टहैंड का उपयोग करके एक ही साफ़ लाइन में जोड़ सकते हैं!
+
+#### शार्टहैंड सिंटैक्स का क्रम:
+\`\`\`css
+background: color image repeat attachment position / size;
+\`\`\`
+
+#### शार्टहैंड का उदाहरण:
+\`\`\`css
+/* लंबा तरीका: */
+div {
+  background-color: #000;
+  background-image: url('banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* शार्टहैंड तरीका (बिल्कुल समान!): */
+div {
+  background: #000 url('banner.jpg') no-repeat center / cover;
+}
+\`\`\`
+*(नोट: ध्यान दें कि position और size को अलग करने के लिए बीच में स्लैश \`/\` लगाया गया है!)*
+
+[[SANDBOX_0]]`,
+      sandboxes: [
+        {
+          html: `<div class="card cover-demo">\n  <h3>background-size: cover;</h3>\n  <p>Fills entire box nicely.</p>\n</div>\n\n<div class="card contain-demo">\n  <h3>background-size: contain;</h3>\n  <p>Fits image without cropping.</p>\n</div>`,
+          css: `.card {\n  height: 140px;\n  color: white;\n  padding: 15px;\n  margin-bottom: 15px;\n  border-radius: 8px;\n  border: 2px solid #bdc3c7;\n  text-shadow: 1px 1px 3px black;\n}\n\n/* Using Shorthand with Cover */\n.cover-demo {\n  background: #2c3e50 url("https://ik.imagekit.io/Sankit/background.jpg") no-repeat center / cover;\n}\n\n/* Using Shorthand with Contain */\n.contain-demo {\n  background: #1a252f url("https://ik.imagekit.io/Sankit/background.jpg") no-repeat center / contain;\n}`
         }
       ]
     }
@@ -47,183 +376,183 @@ export const chapter03 = {
 
 export const chapter03Quiz = [
   {
-    "id": "q1",
-    "question_en": "Which CSS property is used to set the background color of an element?",
-    "question_hi": "किसी element की पृष्ठभूमि का रंग सेट करने के लिए किस CSS property का उपयोग किया जाता है?",
-    "options_en": [
-      "color",
-      "background-color",
-      "bgcolor",
-      "background"
-    ],
-    "options_hi": [
-      "color",
-      "background-color",
-      "bgcolor",
-      "background"
-    ],
-    "correctAnswerIndex": 1
-  },
-  {
-    "id": "q2",
-    "question_en": "What is the correct way to specify a hexadecimal color for pure red?",
-    "question_hi": "शुद्ध लाल रंग के लिए हेक्साडेसिमल रंग निर्दिष्ट करने का सही तरीका क्या है?",
-    "options_en": [
-      "#RRGGBB",
-      "#FF0000",
-      "rgb(255,0,0)",
-      "hsl(0,100%,50%)"
-    ],
-    "options_hi": [
-      "#RRGGBB",
-      "#FF0000",
-      "rgb(255,0,0)",
-      "hsl(0,100%,50%)"
-    ],
-    "correctAnswerIndex": 1
-  },
-  {
-    "id": "q3",
-    "question_en": "Which color format allows you to specify transparency?",
-    "question_hi": "कौन सा रंग प्रारूप आपको पारदर्शिता निर्दिष्ट करने की अनुमति देता है?",
-    "options_en": [
-      "Hexadecimal",
+    id: "q1",
+    question_en: "Which color format uses a hash (#) followed by 6 characters (e.g., #FF0000)?",
+    question_hi: "कौन सा कलर फॉर्मेट एक हैश (#) और उसके बाद 6 अक्षरों का उपयोग करता है (जैसे #FF0000)?",
+    options_en: [
       "RGB",
-      "RGBA",
-      "HSL"
+      "HEX (Hexadecimal)",
+      "HSL",
+      "Color Keyword"
     ],
-    "options_hi": [
-      "हेक्साडेसिमल",
+    options_hi: [
       "RGB",
-      "RGBA",
-      "HSL"
+      "HEX (हेक्साडेसिमल)",
+      "HSL",
+      "रंग का नाम (Keyword)"
     ],
-    "correctAnswerIndex": 2
+    correctAnswerIndex: 1
   },
   {
-    "id": "q4",
-    "question_en": "What does `background-repeat: no-repeat;` do?",
-    "question_hi": "`background-repeat: no-repeat;` क्या करता है?",
-    "options_en": [
-      "Repeats the image horizontally",
-      "Repeats the image vertically",
-      "Displays the image only once",
-      "Stretches the image to fit"
+    id: "q2",
+    question_en: "What does the letter 'A' stand for in RGBA and HSLA color formats?",
+    question_hi: "RGBA और HSLA कलर फॉर्मेट में 'A' अक्षर का क्या अर्थ है?",
+    options_en: [
+      "Alignment",
+      "Angle",
+      "Alpha (Opacity/Transparency)",
+      "Absolute"
     ],
-    "options_hi": [
-      "छवि को क्षैतिज रूप से दोहराता है",
-      "छवि को लंबवत रूप से दोहराता है",
-      "छवि को केवल एक बार प्रदर्शित करता है",
-      "छवि को फिट करने के लिए फैलाता है"
+    options_hi: [
+      "Alignment (संरेखण)",
+      "Angle (कोण)",
+      "Alpha (पारदर्शिता / Opacity)",
+      "Absolute (पूर्ण)"
     ],
-    "correctAnswerIndex": 2
+    correctAnswerIndex: 2
   },
   {
-    "id": "q5",
-    "question_en": "Which `background-size` value scales the background image to cover the entire container, even if it has to crop the image?",
-    "question_hi": "कौन सा `background-size` मान background image को पूरे container को कवर करने के लिए स्केल करता है, भले ही उसे image को क्रॉप करना पड़े?",
-    "options_en": [
+    id: "q3",
+    question_en: "What value of Alpha in RGBA makes an element completely invisible (transparent)?",
+    question_hi: "RGBA में Alpha का कौन सा मान किसी एलिमेंट को पूरी तरह से अदृश्य (transparent) बना देता है?",
+    options_en: [
+      "1.0",
+      "100",
+      "0.0",
+      "0.5"
+    ],
+    options_hi: [
+      "1.0",
+      "100",
+      "0.0",
+      "0.5"
+    ],
+    correctAnswerIndex: 2
+  },
+  {
+    id: "q4",
+    question_en: "Which CSS property is required to display an image as a background?",
+    question_hi: "किसी इमेज को बैकग्राउंड के रूप में दिखाने के लिए किस CSS प्रॉपर्टी की आवश्यकता होती है?",
+    options_en: [
+      "background-color",
+      "background-image",
+      "img-source",
+      "background-src"
+    ],
+    options_hi: [
+      "background-color",
+      "background-image",
+      "img-source",
+      "background-src"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    id: "q5",
+    question_en: "By default, how does a web browser display a background image that is smaller than its container?",
+    question_hi: "डिफ़ॉल्ट रूप से, वेब ब्राउज़र उस बैकग्राउंड इमेज को कैसे दिखाता है जो अपने कंटेनर से छोटी होती है?",
+    options_en: [
+      "It stretches the image once",
+      "It hides the image",
+      "It repeats (tiles) the image horizontally and vertically",
+      "It places it only in the top-right corner"
+    ],
+    options_hi: [
+      "यह इमेज को एक बार खींचकर बड़ा कर देता है",
+      "यह इमेज को छिपा देता है",
+      "यह इमेज को क्षैतिज और लंबवत (horizontally and vertically) दोनों दिशाओं में दोहराता (repeat करता) है",
+      "यह इसे केवल ऊपरी-दाएँ कोने में रखता है"
+    ],
+    correctAnswerIndex: 2
+  },
+  {
+    id: "q6",
+    question_en: "Which CSS function creates a background gradient transitioning in a straight line?",
+    question_hi: "कौन सा CSS फ़ंक्शन एक सीधी रेखा में बदलने वाला बैकग्राउंड ग्रेडिएंट बनाता है?",
+    options_en: [
+      "radial-gradient()",
+      "straight-gradient()",
+      "conic-gradient()",
+      "linear-gradient()"
+    ],
+    options_hi: [
+      "radial-gradient()",
+      "straight-gradient()",
+      "conic-gradient()",
+      "linear-gradient()"
+    ],
+    correctAnswerIndex: 3
+  },
+  {
+    id: "q7",
+    question_en: "Does the browser treat a CSS gradient as a color or as an image?",
+    question_hi: "क्या वेब ब्राउज़र CSS ग्रेडिएंट को एक रंग (color) मानता है या एक इमेज (image)?",
+    options_en: [
+      "As a text property",
+      "As a color (use background-color)",
+      "As an image (use background-image)",
+      "As an SVG element"
+    ],
+    options_hi: [
+      "एक टेक्स्ट प्रॉपर्टी के रूप में",
+      "एक रंग के रूप में (background-color का उपयोग करें)",
+      "एक इमेज के रूप में (background-image का उपयोग करें)",
+      "एक SVG एलिमेंट के रूप में"
+    ],
+    correctAnswerIndex: 2
+  },
+  {
+    id: "q8",
+    question_en: "Which value of 'background-size' scales the image to completely cover the container without altering its aspect ratio?",
+    question_hi: "'background-size' का कौन सा मान इमेज के अनुपात (aspect ratio) को बिगाड़े बिना पूरे कंटेनर को पूरी तरह ढक लेता है?",
+    options_en: [
       "contain",
-      "auto",
       "cover",
-      "100%"
+      "100% 100%",
+      "auto"
     ],
-    "options_hi": [
+    options_hi: [
       "contain",
-      "auto",
       "cover",
-      "100%"
+      "100% 100%",
+      "auto"
     ],
-    "correctAnswerIndex": 2
+    correctAnswerIndex: 1
   },
   {
-    "id": "q6",
-    "question_en": "How do you set a background image that stays in place when the user scrolls?",
-    "question_hi": "आप एक background image कैसे सेट करते हैं जो उपयोगकर्ता के स्क्रॉल करने पर अपनी जगह पर स्थिर रहती है?",
-    "options_en": [
-      "background-attachment: scroll;",
+    id: "q9",
+    question_en: "Which property locks a background image in place so it doesn't move when the user scrolls the page (Parallax effect)?",
+    question_hi: "कौन सी प्रॉपर्टी बैकग्राउंड इमेज को अपनी जगह पर लॉक कर देती है ताकि पेज स्क्रॉल करने पर वह न हिले (Parallax इफ़ेक्ट)?",
+    options_en: [
+      "background-repeat: no-repeat;",
       "background-position: fixed;",
       "background-attachment: fixed;",
-      "background-repeat: no-repeat;"
+      "background-scroll: false;"
     ],
-    "options_hi": [
-      "background-attachment: scroll;",
+    options_hi: [
+      "background-repeat: no-repeat;",
       "background-position: fixed;",
       "background-attachment: fixed;",
-      "background-repeat: no-repeat;"
+      "background-scroll: false;"
     ],
-    "correctAnswerIndex": 2
+    correctAnswerIndex: 2
   },
   {
-    "id": "q7",
-    "question_en": "Which of the following is NOT a valid CSS color format?",
-    "question_hi": "निम्नलिखित में से कौन सा एक वैध CSS रंग प्रारूप नहीं है?",
-    "options_en": [
-      "RGB",
-      "CMYK",
-      "Hexadecimal",
-      "HSL"
+    id: "q10",
+    question_en: "In the shorthand 'background: #000 url(\"img.jpg\") no-repeat center / cover;', what character separates position and size?",
+    question_hi: "शार्टहैंड 'background: #000 url(\"img.jpg\") no-repeat center / cover;' में, position और size को कौन सा चिह्न अलग करता है?",
+    options_en: [
+      ", (Comma)",
+      "/ (Forward Slash)",
+      "- (Hyphen)",
+      ": (Colon)"
     ],
-    "options_hi": [
-      "RGB",
-      "CMYK",
-      "हेक्साडेसिमल",
-      "HSL"
+    options_hi: [
+      ", (अल्पविराम / Comma)",
+      "/ (स्लैश / Forward Slash)",
+      "- (हाइफ़न)",
+      ": (कोलन)"
     ],
-    "correctAnswerIndex": 1
-  },
-  {
-    "id": "q8",
-    "question_en": "How can you add multiple background images to a single element?",
-    "question_hi": "आप एक ही element में कई background images कैसे जोड़ सकते हैं?",
-    "options_en": [
-      "Using multiple `background-image` properties",
-      "Separating `url()` values with commas in `background-image`",
-      "Using `background-image-1`, `background-image-2` properties",
-      "It's not possible to add multiple background images"
-    ],
-    "options_hi": [
-      "कई `background-image` properties का उपयोग करके",
-      "`background-image` में `url()` मानों को अल्पविराम से अलग करके",
-      "`background-image-1`, `background-image-2` properties का उपयोग करके",
-      "कई background images जोड़ना संभव नहीं है"
-    ],
-    "correctAnswerIndex": 1
-  },
-  {
-    "id": "q9",
-    "question_en": "What do HSL stand for in `hsl()` color format?",
-    "question_hi": "`hsl()` रंग प्रारूप में HSL का क्या अर्थ है?",
-    "options_en": [
-      "High, Saturation, Lightness",
-      "Hue, Saturation, Lightness",
-      "Highlight, Shade, Luminosity",
-      "Hot, Soft, Light"
-    ],
-    "options_hi": [
-      "हाई, सैचुरेशन, लाइटनेस",
-      "ह्यू, सैचुरेशन, लाइटनेस",
-      "हाइलाइट, शेड, ल्यूमिनोसिटी",
-      "हॉट, सॉफ्ट, लाइट"
-    ],
-    "correctAnswerIndex": 1
-  },
-  {
-    "id": "q10",
-    "question_en": "In the `background` shorthand property, which component is typically listed first?",
-    "question_hi": "`background` शॉर्टहैंड property में, आमतौर पर कौन सा घटक पहले सूचीबद्ध होता है?",
-    "options_en": [
-      "background-image",
-      "background-position",
-      "background-color",
-      "background-repeat"
-    ],
-    "options_hi": [
-      "background-image",
-      "background-position",
-      "background-color",
-      "background-repeat"
-    ],
-    "correctAnswerIndex": 2
+    correctAnswerIndex: 1
   }
 ];

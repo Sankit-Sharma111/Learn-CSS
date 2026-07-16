@@ -27,6 +27,8 @@ interface AppState {
   setEditorHtml: (html: string | ((prev: string) => string)) => void;
   editorCss: string;
   setEditorCss: (css: string | ((prev: string) => string)) => void;
+  editorJs: string;
+  setEditorJs: (js: string | ((prev: string) => string)) => void;
   
   isDarkMode: boolean;
   setIsDarkMode: (isDark: boolean) => void;
@@ -42,6 +44,8 @@ interface AppState {
 }
 
 const AppContext = createContext<AppState | undefined>(undefined);
+
+import { courseData } from "./content";
 
 const getStorage = <T,>(key: string, defaultValue: T): T => {
   try {
@@ -62,8 +66,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
   const [editorHtml, setEditorHtml] = useState("<!-- Write HTML here -->\n");
   const [editorCss, setEditorCss] = useState("/* Write CSS here */\n");
+  const [editorJs, setEditorJs] = useState("// Write JS here\n");
 
-  const [completedChapters, setCompletedChapters] = useState<string[]>(() => getStorage("completedChapters", []));
+  const [completedChapters, setCompletedChapters] = useState<string[]>(() => {
+    const saved = getStorage<string[]>("completedChapters", []);
+    return saved.filter(id => courseData.some(c => c.id === id));
+  });
   const [userName, setUserName] = useState(() => getStorage("userName", "Guest"));
   const [profileImage, setProfileImage] = useState<string | null>(() => getStorage("profileImage", null));
   const [isDarkMode, setIsDarkMode] = useState(() => getStorage("isDarkMode", false));
@@ -122,6 +130,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         profileImage, setProfileImage,
         editorHtml, setEditorHtml,
         editorCss, setEditorCss,
+        editorJs, setEditorJs,
         isDarkMode, setIsDarkMode,
         language, setLanguage,
         isCertificateGenerated, setIsCertificateGenerated,

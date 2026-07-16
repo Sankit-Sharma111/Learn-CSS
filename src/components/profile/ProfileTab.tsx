@@ -36,8 +36,8 @@ export function ProfileTab() {
   };
 
   const totalChapters = courseData.length;
-  const completedCount = completedChapters.length;
-  const progressPercent = Math.round((completedCount / totalChapters) * 100) || 0;
+  const validCompletedCount = completedChapters.length;
+  const progressPercent = Math.round((validCompletedCount / totalChapters) * 100) || 0;
 
   const handleSave = () => {
     if (editName.trim()) {
@@ -120,8 +120,8 @@ export function ProfileTab() {
             />
           </div>
           <div className="flex justify-between text-xs text-slate-400 font-medium">
-            <span>{completedCount} {t.completedChapters}</span>
-            <span>{totalChapters - completedCount} {t.remaining}</span>
+            <span>{validCompletedCount} {t.completedChapters}</span>
+            <span>{totalChapters - validCompletedCount} {t.remaining}</span>
           </div>
         </div>
       </div>
